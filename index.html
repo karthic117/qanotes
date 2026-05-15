@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Karthic Kumar T J — QA Tester & Learning Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sky: #E8F4FD;
+  --sky2: #C5E3F7;
+  --blue: #1D6FD8;
+  --blue-d: #1558B0;
+  --green: #16A34A;
+  --green-bg: #DCFCE7;
+  --yellow: #B45309;
+  --yellow-bg: #FEF3C7;
+  --purple: #6D28D9;
+  --purple-bg: #EDE9FE;
+  --orange: #C2410C;
+  --orange-bg: #FFEDD5;
+  --ink: #1E293B;
+  --ink2: #475569;
+  --ink3: #94A3B8;
+  --surface: #FFFFFF;
+  --bg: #F8FAFC;
+  --border: #E2E8F0;
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.6;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);backdrop-filter:blur(10px);border-bottom:2px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;}
+.nav-logo{font-size:19px;font-weight:900;color:var(--blue);letter-spacing:-0.5px;}
+.nav-logo span{color:var(--ink);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;font-weight:700;color:var(--ink2);text-decoration:none;padding:6px 14px;border-radius:30px;transition:all 0.15s;}
+.nav-links a:hover{background:var(--sky);color:var(--blue);}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,#EFF6FF 0%,#F0FDF4 100%);border-bottom:2px solid var(--border);padding:4rem 2rem 3rem;}
+.hero-inner{max-width:860px;margin:0 auto;}
+.fun-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:white;font-size:13px;font-weight:800;padding:6px 18px;border-radius:30px;margin-bottom:1.5rem;letter-spacing:0.3px;}
+.hero h1{font-size:clamp(30px,5vw,52px);font-weight:900;line-height:1.12;letter-spacing:-1px;margin-bottom:1rem;color:var(--ink);}
+.hero h1 .hi{color:var(--blue);}
+.hero-desc{font-size:17px;color:var(--ink2);max-width:580px;line-height:1.75;margin-bottom:2rem;}
+.welcome-card{background:white;border:2px solid var(--blue);border-radius:var(--radius);padding:1.25rem 1.5rem;max-width:620px;margin-bottom:2rem;display:flex;gap:14px;align-items:flex-start;}
+.welcome-icon{font-size:32px;flex-shrink:0;}
+.welcome-label{font-size:11px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px;}
+.welcome-text{font-size:15px;color:var(--ink2);line-height:1.7;}
+.hero-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-size:13px;font-weight:700;padding:5px 14px;border-radius:30px;border:2px solid transparent;}
+.chip.blue{background:var(--sky);color:var(--blue);border-color:var(--sky2);}
+.chip.green{background:var(--green-bg);color:var(--green);}
+.chip.yellow{background:var(--yellow-bg);color:var(--yellow);}
+.chip.purple{background:var(--purple-bg);color:var(--purple);}
+
+/* SECTIONS */
+.section-wrap{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.section-head{margin-bottom:2rem;}
+.section-emoji{font-size:32px;margin-bottom:8px;}
+.section-tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:6px;}
+.section-title{font-size:27px;font-weight:900;color:var(--ink);letter-spacing:-0.5px;line-height:1.2;}
+.section-sub{font-size:15px;color:var(--ink2);margin-top:6px;}
+hr.divider{border:none;height:2px;background:var(--border);margin:0;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+.skill-card{background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem;transition:transform 0.18s,border-color 0.18s,box-shadow 0.18s;}
+.skill-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(29,111,216,0.1);border-color:var(--blue);}
+.skill-icon{font-size:28px;margin-bottom:10px;}
+.skill-name{font-size:15px;font-weight:800;margin-bottom:6px;}
+.skill-real{font-size:13px;color:var(--ink2);margin-bottom:10px;line-height:1.55;}
+.skill-analogy{background:var(--sky);border-radius:var(--radius-sm);padding:8px 12px;font-size:12px;color:var(--blue);font-weight:700;display:flex;gap:6px;align-items:flex-start;}
+.skill-analogy::before{content:"🎓";flex-shrink:0;}
+
+/* TUTORIALS */
+.tut-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2rem;}
+.tut-tab{font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;padding:8px 20px;border-radius:30px;border:2px solid var(--border);background:white;color:var(--ink2);cursor:pointer;transition:all 0.15s;}
+.tut-tab:hover{border-color:var(--blue);color:var(--blue);}
+.tut-tab.active{background:var(--blue);color:white;border-color:var(--blue);}
+.tut-pane{display:none;}
+.tut-pane.active{display:block;}
+
+/* LESSON */
+.lesson{background:white;border:2px solid var(--border);border-radius:var(--radius);margin-bottom:16px;overflow:hidden;transition:border-color 0.15s;}
+.lesson.open{border-color:var(--blue);}
+.lesson-hdr{display:flex;align-items:center;gap:14px;padding:1rem 1.25rem;cursor:pointer;user-select:none;}
+.lesson-hdr:hover{background:var(--bg);}
+.lesson-num{width:32px;height:32px;border-radius:50%;background:var(--ink);color:white;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lesson.open .lesson-num{background:var(--blue);}
+.lesson-title{font-size:15px;font-weight:800;flex:1;}
+.lesson-badge{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;background:var(--sky);color:var(--blue);}
+.lesson-chevron{font-size:20px;color:var(--ink3);transition:transform 0.2s;}
+.lesson.open .lesson-chevron{transform:rotate(180deg);color:var(--blue);}
+.lesson-body{display:none;padding:0 1.25rem 1.5rem;}
+.lesson.open .lesson-body{display:block;}
+
+/* BOXES */
+.rwe{background:var(--yellow-bg);border:2px solid #FDE68A;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1rem 0;}
+.rwe-label{font-size:11px;font-weight:800;color:var(--yellow);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+
+.rwe-story{font-size:15px;color:var(--ink);line-height:1.75;font-weight:600;}
+
+.simple-box{background:var(--green-bg);border:2px solid #86EFAC;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1rem 0;display:flex;gap:12px;align-items:flex-start;}
+.simple-icon{font-size:28px;flex-shrink:0;}
+.simple-label{font-size:11px;font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;}
+.simple-text{font-size:15px;color:var(--ink);line-height:1.75;font-weight:600;}
+
+.tech-box{background:var(--purple-bg);border:2px solid #C4B5FD;border-radius:var(--radius);padding:1.25rem 1.5rem;margin:1rem 0;}
+.tech-label{font-size:11px;font-weight:800;color:var(--purple);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+.tech-label::before{content:"💻";}
+.tech-text{font-size:14px;color:var(--ink2);line-height:1.75;}
+
+.tip-box{background:var(--orange-bg);border:2px solid #FDBA74;border-radius:var(--radius-sm);padding:10px 14px;margin:10px 0;font-size:14px;font-weight:600;color:var(--orange);display:flex;gap:8px;}
+.tip-box::before{content:"💡";flex-shrink:0;}
+
+/* CODE */
+.code-wrap{background:#0F172A;border-radius:var(--radius-sm);padding:1.1rem 1.25rem;margin:10px 0;position:relative;overflow-x:auto;}
+.code-wrap pre{font-family:'Fira Code',monospace;font-size:13px;color:#E2E8F0;line-height:1.7;white-space:pre;}
+.c-comment{color:#64748B;} .c-key{color:#7DD3FC;} .c-str{color:#86EFAC;} .c-fn{color:#C084FC;} .c-num{color:#FCD34D;}
+.code-lang-tag{position:absolute;top:8px;right:12px;font-family:'Fira Code',monospace;font-size:10px;color:#475569;letter-spacing:1px;text-transform:uppercase;}
+.copy-btn{position:absolute;bottom:8px;right:10px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,0.07);color:#94A3B8;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all 0.15s;}
+.copy-btn:hover{background:rgba(255,255,255,0.14);color:white;}
+
+/* STEPS LIST */
+.steps-list{margin:10px 0;padding:0;list-style:none;}
+.steps-list li{font-size:14px;color:var(--ink2);line-height:1.7;padding:6px 0 6px 30px;position:relative;border-bottom:1px dashed var(--border);}
+.steps-list li:last-child{border-bottom:none;}
+.steps-list li::before{content:attr(data-n);position:absolute;left:0;top:7px;width:20px;height:20px;border-radius:50%;background:var(--blue);color:white;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;line-height:1;}
+
+/* TABLE */
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;margin:10px 0;}
+.cmp-table th{background:var(--bg);padding:9px 14px;text-align:left;font-weight:800;font-size:12px;color:var(--ink2);border-bottom:2px solid var(--border);border-right:1px solid var(--border);}
+.cmp-table td{padding:9px 14px;border-bottom:1px solid var(--border);border-right:1px solid var(--border);color:var(--ink2);}
+.cmp-table tr:hover td{background:var(--sky);}
+.cmp-table td:last-child,.cmp-table th:last-child{border-right:none;}
+.yes{color:var(--green);font-weight:800;} .no{color:var(--ink3);}
+
+/* CONTACT */
+.contact-wrap{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:2rem;}
+@media(max-width:600px){.contact-grid{grid-template-columns:1fr;}}
+.contact-card{background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.5rem;display:flex;align-items:flex-start;gap:14px;transition:border-color 0.18s,transform 0.18s;text-decoration:none;color:inherit;}
+.contact-card:hover{border-color:var(--blue);transform:translateY(-3px);box-shadow:0 8px 24px rgba(29,111,216,0.1);}
+.contact-card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.contact-card-title{font-size:14px;font-weight:800;margin-bottom:4px;}
+.contact-card-value{font-size:14px;color:var(--blue);font-weight:700;word-break:break-all;}
+.contact-card-sub{font-size:12px;color:var(--ink3);margin-top:3px;}
+.contact-cta{background:linear-gradient(135deg,#EFF6FF 0%,#F0FDF4 100%);border:2px solid var(--border);border-radius:var(--radius);padding:2rem;margin-top:20px;text-align:center;}
+.contact-cta p{font-size:16px;color:var(--ink2);margin-bottom:1rem;font-weight:600;}
+.contact-cta a{display:inline-block;background:var(--blue);color:white;font-size:15px;font-weight:800;padding:12px 32px;border-radius:30px;text-decoration:none;transition:background 0.15s,transform 0.15s;}
+.contact-cta a:hover{background:var(--blue-d);transform:translateY(-2px);}
+
+/* COMMENT SECTION */
+.comment-wrap{max-width:860px;margin:0 auto;padding:3rem 2rem;}
+.comment-form{background:white;border:2px solid var(--border);border-radius:var(--radius);padding:2rem;margin-top:1.5rem;}
+.form-row{margin-bottom:1.25rem;}
+.form-row label{display:block;font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:6px;}
+.form-row input,.form-row textarea,.form-row select{
+  width:100%;padding:10px 14px;font-family:'Nunito',sans-serif;font-size:14px;
+  border:2px solid var(--border);border-radius:var(--radius-sm);
+  background:var(--bg);color:var(--ink);outline:none;
+  transition:border-color 0.15s;
+}
+.form-row input:focus,.form-row textarea:focus,.form-row select:focus{border-color:var(--blue);background:white;}
+.form-row textarea{resize:vertical;min-height:110px;line-height:1.6;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:560px){.form-grid{grid-template-columns:1fr;}}
+.submit-btn{
+  background:var(--blue);color:white;border:none;
+  font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;
+  padding:11px 32px;border-radius:30px;cursor:pointer;
+  transition:background 0.15s,transform 0.15s;
+}
+.submit-btn:hover{background:var(--blue-d);transform:translateY(-1px);}
+.submit-btn:disabled{background:var(--ink3);cursor:not-allowed;transform:none;}
+.form-note{font-size:12px;color:var(--ink3);margin-top:10px;line-height:1.6;}
+.form-success{
+  display:none;background:var(--green-bg);border:2px solid #86EFAC;
+  border-radius:var(--radius-sm);padding:14px 18px;
+  font-size:14px;font-weight:600;color:var(--green);margin-top:1rem;
+}
+.form-error{
+  display:none;background:var(--orange-bg);border:2px solid #FDBA74;
+  border-radius:var(--radius-sm);padding:14px 18px;
+  font-size:14px;font-weight:600;color:var(--orange);margin-top:1rem;
+}
+
+/* FOOTER */
+footer{background:var(--ink);color:#94A3B8;padding:2rem;text-align:center;font-size:14px;}
+footer strong{color:white;font-weight:800;}
+
+/* ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.hero-inner>*{animation:fadeUp 0.5s ease both;}
+.hero-inner>*:nth-child(2){animation-delay:.08s;}
+.hero-inner>*:nth-child(3){animation-delay:.16s;}
+.hero-inner>*:nth-child(4){animation-delay:.24s;}
+.hero-inner>*:nth-child(5){animation-delay:.32s;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Karthic<span> Kumar T J</span></div>
+  <div class="nav-links">
+    <a href="#about">👋 About</a>
+    <a href="#skills">🛠 Skills</a>
+    <a href="#tutorials">📚 Tutorials</a>
+    <a href="#contact">✉️ Contact</a>
+    <a href="#comments">💬 Comments</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="about">
+  <div class="hero-inner">
+    <div class="fun-tag">QA Tester</div>
+    <h1><span class="hi">Karthic Kumar T J</span></h1>
+    <p class="hero-desc">
+      I test software. This site has notes and tutorials I put together — mostly for anyone who is starting out in QA and wants to learn at their own pace.
+    </p>
+
+    <div class="welcome-card">
+      <div class="welcome-icon">🔍</div>
+      <div>
+        <div class="welcome-label">What a QA Tester Does</div>
+        <div class="welcome-text">
+          Developers build software. QA testers check it. We go through the application, try different scenarios, and report what does not work as expected. That is the job.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-chips">
+      <span class="chip blue">🎭 Playwright</span>
+      
+      <span class="chip green">📝 TypeScript</span>
+      
+      <span class="chip yellow">🤖 Gen AI Testing</span>
+      <span class="chip purple">⚙️ GitHub Copilot</span>
+    </div>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SKILLS -->
+<div class="section-wrap" id="skills">
+  <div class="section-head">
+    <div class="section-emoji">🛠</div>
+    <div class="section-tag">What I Know</div>
+    <div class="section-title">My Skills &amp; Tools</div>
+    <div class="section-sub">Every skill is explained in simple words first, then in technical terms. No prior knowledge needed to get started.</div>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="skill-card">
+      <div class="skill-icon">🎭</div>
+      <div class="skill-name">Playwright</div>
+      <div class="skill-real">A tool that controls a website automatically — it clicks buttons, fills in forms, and checks results, all without a human doing it manually.</div>
+      <div class="skill-analogy">Like a helpful robot that uses an app for you all day and tells you if anything goes wrong!</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🔌</div>
+      <div class="skill-name">API Testing</div>
+      <div class="skill-real">Testing the communication between different software systems — making sure data is correctly sent and received behind the scenes.</div>
+      <div class="skill-analogy">Like calling the backend service directly to verify data is correct — before checking the UI.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI-Assisted Testing</div>
+      <div class="skill-real">Using AI tools like Claude and ChatGPT to help write test cases, find errors faster, and create reports — saving hours of manual work.</div>
+      <div class="skill-analogy">Like having a very studious classmate who helps you prepare questions before an exam — in seconds!</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">🚦</div>
+      <div class="skill-name">CI/CD Pipelines</div>
+      <div class="skill-real">Automated systems that run all tests every time a developer writes new code — so problems are caught immediately, not later.</div>
+      <div class="skill-analogy">Like a checkpoint at the pipeline — every code change is verified automatically before it reaches users.</div>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-icon">📋</div>
+      <div class="skill-name">Bug Reporting</div>
+      <div class="skill-real">Writing clear, detailed reports when something does not work correctly — including exact steps to reproduce the problem.</div>
+      <div class="skill-analogy">Like writing a neat complaint letter to the principal — with all the evidence, so the problem gets solved quickly!</div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- TUTORIALS -->
+<div class="section-wrap" id="tutorials">
+  <div class="section-head">
+    <div class="section-emoji">📚</div>
+    <div class="section-tag">Learn Step by Step</div>
+    <div class="section-title">QA Tutorials</div>
+    <div class="section-sub">Start with Manual Testing — the foundation of all QA. Then move to automation, AI tools, and more. Each topic is explained simply first, then technically.</div>
+  </div>
+
+  <div class="tut-tabs">
+    <button class="tut-tab active" onclick="showTab('manual',this)">📋 Manual Testing</button>
+    <button class="tut-tab" onclick="showTab('playwright',this)">🎭 Playwright</button>
+    <button class="tut-tab" onclick="showTab('genai',this)">🤖 Gen AI for QA</button>
+    <button class="tut-tab" onclick="showTab('ghcp',this)">⚙️ GitHub Copilot</button>
+    <button class="tut-tab" onclick="showTab('claude',this)">✦ Claude AI</button>
+  </div>
+
+  <!-- ═══ MANUAL TESTING ═══ -->
+  <div class="tut-pane active" id="tab-manual">
+
+    <div class="rwe">
+      <div class="rwe-label">Start Here — The Foundation of All Testing</div>
+      <div class="rwe-story">
+        Before a new car reaches the showroom, a trained person sits inside it, drives it, presses every button, checks every light, and confirms everything works as expected. No machine replaces this step completely.
+        <br><br>
+        <strong>Manual testing is exactly that — a trained tester uses the software by hand, just like a real user would, and checks that everything works correctly.</strong> All automation comes after you first understand manual testing well.
+      </div>
+    </div>
+
+    <div class="lesson open">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">1</div>
+        <span class="lesson-title">What is Manual Testing?</span>
+        <span class="lesson-badge">Foundation</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">👀</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Imagine you bought a new phone. Before using it daily, you try every app, check the camera, test the buttons, and make sure the charger works. You are doing manual testing! In software, a tester does the same thing — opens the app, tries every feature, and notes down anything that does not work as expected.
+            </div>
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            Manual testing is the process of executing test cases by a human tester without the use of automation tools. The tester interacts with the application under test (AUT) directly — entering inputs, observing outputs, and comparing actual results against expected results defined in test cases. It is most effective for exploratory testing, usability testing, and ad-hoc testing where human judgement is essential.
+          </div>
+        </div>
+        <div class="tip-box">Manual testing is the starting point for every QA engineer. Even if you move to automation later, you must first understand how to test manually — because automation only does what you tell it to do.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">2</div>
+        <span class="lesson-title">Types of Manual Testing — Explained in Detail</span>
+        <span class="lesson-badge">Core Concepts</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🗂️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Testing is not just one activity — it is a collection of different approaches, each designed to catch a specific type of problem. A good QA tester knows which type to apply and when.
+            </div>
+          </div>
+        </div>
+
+        <!-- 1. Functional -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">⚙️</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">1. Functional Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            Verifies that each feature of the application works exactly as specified in the requirements. It is the most fundamental type of testing — every feature must be tested before anything else.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Input fields accept correct values, buttons perform the right actions, forms submit data correctly, error messages appear when required.<br><br>
+            <strong>Example:</strong> On a login page — does entering the correct email and password navigate the user to the dashboard? Does clicking "Forgot Password" open the reset flow?<br><br>
+            <strong>When to use:</strong> After every new feature is developed, before release, and after any bug fix.
+          </div>
+        </div>
+
+        <!-- 2. Smoke -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">💨</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">2. Smoke Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            A quick, high-level test to check whether the most critical functionality of the application is working. It is done before detailed testing begins — to confirm the build is stable enough to test further.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Can the app be launched? Can the user log in? Does the home page load? Are the main navigation links working?<br><br>
+            <strong>Example:</strong> A new build is given by the developer. Before running 200 test cases, the tester first checks — does the app open? Does login work? If these fail, the build is rejected immediately without wasting time on further tests.<br><br>
+            <strong>When to use:</strong> Every time a new build is received from the development team.
+          </div>
+          <div class="tip-box" style="margin-top:10px;">Smoke testing saves time. If the app cannot even open, there is no point testing anything else.</div>
+        </div>
+
+        <!-- 3. Sanity -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">🎯</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">3. Sanity Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            A focused check done after a bug fix or a small change — to confirm that the specific fix works and has not caused new issues in that area. Unlike smoke testing (which is broad), sanity testing is narrow and targeted.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Only the area that was changed or fixed is tested in detail.<br><br>
+            <strong>Example:</strong> Developer fixes a bug where the "Apply Coupon" button was not working. The tester performs a sanity test — tests only the coupon functionality to confirm it now works correctly, without re-testing the entire checkout flow.<br><br>
+            <strong>When to use:</strong> After a bug fix or a minor change, when there is limited time.
+          </div>
+        </div>
+
+        <!-- 4. Regression -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">🔁</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">4. Regression Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            Re-tests previously working functionality to ensure that new code changes have not broken anything. Every time the codebase changes, regression testing is done to protect existing features.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> All features that were working before the change must still work after the change.<br><br>
+            <strong>Example:</strong> A new "Dark Mode" feature is added to the app. Regression testing ensures that login, search, checkout, and all other existing features still work correctly — even though only Dark Mode was changed.<br><br>
+            <strong>When to use:</strong> After every code change, bug fix, or new feature addition.
+          </div>
+          <div class="tip-box" style="margin-top:10px;">Regression testing is the most repeated type of testing in any project — this is why automation is often applied here first.</div>
+        </div>
+
+        <!-- 5. Exploratory -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">🔍</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">5. Exploratory Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            The tester freely explores the application without predefined test cases — using knowledge, intuition, and curiosity to discover unexpected bugs. This relies entirely on the tester's experience and thinking.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Anything that feels unusual, unexpected, or poorly handled — edge cases that no one thought to write a test case for.<br><br>
+            <strong>Example:</strong> The tester opens a shopping app and starts trying unusual things — adding 999 items to the cart, typing emojis in the search bar, rapidly clicking the checkout button multiple times, switching tabs mid-payment. These are scenarios developers may not have considered.<br><br>
+            <strong>When to use:</strong> When exploring a new feature for the first time, or when looking for bugs that structured test cases might miss.
+          </div>
+        </div>
+
+        <!-- 6. Boundary -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">📏</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">6. Boundary Value Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            Tests the extreme edges of allowed input ranges. Most defects occur at boundaries — not in the middle. This technique ensures the application handles minimum, maximum, and just-outside values correctly.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Minimum value, maximum value, one below minimum, one above maximum.<br><br>
+            <strong>Example:</strong> A password field requires 8 to 20 characters.
+            <br>— 7 characters → should be rejected
+            <br>— 8 characters → should be accepted (minimum boundary)
+            <br>— 20 characters → should be accepted (maximum boundary)
+            <br>— 21 characters → should be rejected
+            <br><br>
+            <strong>When to use:</strong> Any field with a defined minimum or maximum — age, price, character count, quantity, date range.
+          </div>
+        </div>
+
+        <!-- 7. Negative -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">❌</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">7. Negative Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            Tests the application with invalid, unexpected, or incorrect inputs — to verify it handles errors gracefully and does not crash or behave unpredictably. A well-built application should always respond with a clear, helpful error message.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Invalid data, empty required fields, wrong formats, special characters in unexpected places, SQL injection attempts.<br><br>
+            <strong>Example:</strong>
+            <br>— Enter letters in a numeric phone field → should show "Please enter a valid number"
+            <br>— Submit a form with all fields empty → each required field should show a validation error
+            <br>— Enter a past date in a "Date of Birth" field that requires adults only → should be rejected
+            <br><br>
+            <strong>When to use:</strong> For every input field and every user action — always test what happens when something goes wrong.
+          </div>
+          <div class="tip-box" style="margin-top:10px;">Negative testing is often skipped by beginners — but it is where many critical bugs hide. Always test the wrong path, not just the right one.</div>
+        </div>
+
+        <!-- 8. UI -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">🖥️</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">8. UI Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            Verifies the visual and interactive elements of the application — layout, fonts, colours, button positions, spacing, and responsiveness across different screen sizes and browsers.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Alignment, font consistency, button sizes, colour contrast, broken images, overlapping elements, and how the page looks on mobile vs desktop.<br><br>
+            <strong>Example:</strong>
+            <br>— The Submit button is cut off on smaller phone screens
+            <br>— A label overlaps the input field on Firefox but looks fine on Chrome
+            <br>— An error message appears in white text on a white background — invisible to the user
+            <br><br>
+            <strong>When to use:</strong> After UI changes, after responsive design updates, and when testing on multiple browsers or devices.
+          </div>
+        </div>
+
+        <!-- 9. UAT -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">👤</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">9. User Acceptance Testing (UAT)</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            The final stage of testing — done by the actual end users or business stakeholders to confirm the software meets their needs and is ready for release. UAT is not done by the QA team — it is done by the people who will actually use the product.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Whether the software solves the real problem it was built for, from the perspective of the actual user — not just technical correctness.<br><br>
+            <strong>Example:</strong> A hospital management system is built and tested by the QA team. Before going live, actual hospital staff — doctors, nurses, front desk — are given access to try it in a test environment. They verify that the workflows match how they actually work in real life.<br><br>
+            <strong>When to use:</strong> After all QA testing is complete, just before the official release.
+          </div>
+          <div class="tip-box" style="margin-top:10px;">UAT can catch issues that QA missed — not because QA was wrong, but because real users think and behave differently from testers.</div>
+        </div>
+
+        <!-- 10. Ad-hoc -->
+        <div style="background:white;border:2px solid var(--border);border-radius:var(--radius);padding:1.25rem 1.5rem;margin:12px 0;">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+            <span style="font-size:22px;">⚡</span>
+            <span style="font-size:15px;font-weight:800;color:var(--ink);">10. Ad-hoc Testing</span>
+          </div>
+          <div class="tech-text" style="margin-bottom:10px;">
+            Informal testing with no documentation, no test cases, and no plan — the tester randomly tests the application trying to break it. It relies entirely on the tester's intuition and domain knowledge.
+          </div>
+          <div style="background:var(--bg);border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:var(--ink2);">
+            <strong>What to check:</strong> Anything — there are no rules. The tester goes wherever their instinct leads.<br><br>
+            <strong>Example:</strong> A tester opens an e-commerce app and starts randomly — searches for a product with only spaces, adds it to the cart, removes it, adds it again, applies a coupon, removes the coupon, goes back, refreshes — just to see if anything breaks unexpectedly.<br><br>
+            <strong>When to use:</strong> When time is short, when exploring a completely new area of the app, or as a complement to structured testing.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">3</div>
+        <span class="lesson-title">How to Write a Test Case</span>
+        <span class="lesson-badge">Must Know</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">📝</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              A test case is like a recipe. A recipe tells you: what ingredients you need, the steps to follow, and what the dish should look like when done. A test case tells you: what conditions are needed, what steps to perform, and what the correct result should be. Anyone should be able to follow a well-written test case and get the same result.
+            </div>
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            A test case is a documented set of conditions, inputs, steps, and expected outcomes used to validate a specific functionality. A well-written test case includes: Test Case ID, Title, Preconditions, Test Steps, Test Data, Expected Result, Actual Result, Status (Pass/Fail), and Priority (Critical/High/Medium/Low).
+          </div>
+        </div>
+        <p style="font-size:14px;color:var(--ink2);margin:12px 0 8px;font-weight:700;">Example — Login Feature Test Case:</p>
+        <div class="code-wrap">
+          <span class="code-lang-tag">Test Case Format</span>
+          <pre><span class="c-comment">Test Case ID   :</span> <span class="c-str">TC_LOGIN_001</span>
+<span class="c-comment">Title          :</span> <span class="c-str">Verify successful login with valid credentials</span>
+<span class="c-comment">Priority       :</span> <span class="c-str">Critical</span>
+
+<span class="c-comment">Precondition   :</span> <span class="c-str">User account must exist. App must be open.</span>
+
+<span class="c-comment">Test Steps     :</span>
+  <span class="c-key">1.</span> Open the application and navigate to the Login page
+  <span class="c-key">2.</span> Enter a valid email address in the Email field
+  <span class="c-key">3.</span> Enter the correct password in the Password field
+  <span class="c-key">4.</span> Click the Login button
+
+<span class="c-comment">Test Data      :</span>
+  <span class="c-str">Email    : testuser@example.com</span>
+  <span class="c-str">Password : Test@1234</span>
+
+<span class="c-comment">Expected Result:</span> <span class="c-str">User is navigated to the Dashboard page.
+                  Welcome message is displayed with the user's name.</span>
+
+<span class="c-comment">Actual Result  :</span> <span class="c-str">[Fill after executing the test]</span>
+<span class="c-comment">Status         :</span> <span class="c-str">Pass / Fail</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">Always write test cases before you start testing — not while testing. This keeps your approach structured and ensures nothing is missed.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">4</div>
+        <span class="lesson-title">How to Write a Bug Report</span>
+        <span class="lesson-badge">Must Know</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🐛</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              When you find a problem, you need to report it clearly so the developer can fix it. A good bug report answers three questions: <strong>What did you do? What did you expect to happen? What actually happened?</strong> The clearer your report, the faster the developer finds and fixes the problem.
+            </div>
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            A defect report (bug report) is a formal document submitted to a bug tracking tool (Jira, Azure DevOps, Bugzilla) that captures a software defect. Severity indicates the impact on the system (Critical, High, Medium, Low). Priority indicates how urgently it must be fixed. Both are determined by the QA engineer and reviewed by the project manager.
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">Bug Report Format</span>
+          <pre><span class="c-comment">Bug ID         :</span> <span class="c-str">BUG_LOGIN_003</span>
+<span class="c-comment">Title          :</span> <span class="c-str">Login button unresponsive when password field is empty</span>
+<span class="c-comment">Severity       :</span> <span class="c-str">High</span>
+<span class="c-comment">Priority       :</span> <span class="c-str">High</span>
+<span class="c-comment">Environment    :</span> <span class="c-str">Chrome 124, Windows 11, App v2.3.1</span>
+
+<span class="c-comment">Steps to Reproduce:</span>
+  <span class="c-key">1.</span> Open the application Login page
+  <span class="c-key">2.</span> Enter a valid email address
+  <span class="c-key">3.</span> Leave the Password field completely empty
+  <span class="c-key">4.</span> Click the Login button
+
+<span class="c-comment">Expected Result:</span>
+  <span class="c-str">A validation message should appear:
+  "Password is required. Please enter your password."</span>
+
+<span class="c-comment">Actual Result  :</span>
+  <span class="c-str">Nothing happens. The Login button does not respond.
+  No error message is shown. No page navigation occurs.</span>
+
+<span class="c-comment">Attachments    :</span> <span class="c-str">Screenshot_login_empty_pass.png</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">Always attach a screenshot or screen recording to your bug report. It removes all confusion and helps the developer reproduce the issue immediately.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">5</div>
+        <span class="lesson-title">Test Life Cycle — How Testing Works in a Project</span>
+        <span class="lesson-badge">Process</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🔄</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Testing in a real project follows a clear process — just like how a book goes from author → editor → proofreader → printer → bookshop. Each step has a purpose. Skipping a step causes problems later. This process is called the <strong>Software Testing Life Cycle (STLC)</strong>.
+            </div>
+          </div>
+        </div>
+        <ul class="steps-list">
+          <li data-n="1"><strong>Requirement Analysis</strong> — Read and understand what the feature should do. Ask questions if anything is unclear.</li>
+          <li data-n="2"><strong>Test Planning</strong> — Decide what to test, how to test it, who will test it, and how long it will take.</li>
+          <li data-n="3"><strong>Test Case Design</strong> — Write all test cases covering happy path, negative, boundary, and edge cases.</li>
+          <li data-n="4"><strong>Test Environment Setup</strong> — Prepare the system, test data, and tools needed to run the tests.</li>
+          <li data-n="5"><strong>Test Execution</strong> — Run each test case one by one. Mark the result as Pass or Fail.</li>
+          <li data-n="6"><strong>Bug Reporting</strong> — Log every failure as a bug in the tracking tool with clear steps and screenshots.</li>
+          <li data-n="7"><strong>Re-testing &amp; Regression</strong> — After the developer fixes the bug, test it again. Also check that the fix did not break anything else.</li>
+          <li data-n="8"><strong>Test Closure</strong> — Summarise the results, prepare a test summary report, and confirm the feature is ready to release.</li>
+        </ul>
+        <div class="tip-box">Understanding this life cycle is the single most important foundation for any QA career. Master this first — everything else builds on top of it.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">6</div>
+        <span class="lesson-title">Manual vs Automation Testing — When to Use Which</span>
+        <span class="lesson-badge">Key Decision</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">⚖️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              A calculator is faster than doing arithmetic by hand — but it cannot decide which calculation to perform. Manual testing is like the human deciding what to check. Automation is like the calculator doing it quickly once you tell it what to do. Both are needed — they work best together.
+            </div>
+          </div>
+        </div>
+        <table class="cmp-table">
+          <thead>
+            <tr><th></th><th>Manual Testing</th><th>Automation Testing</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Best for</strong></td><td>Exploratory, usability, ad-hoc, one-time tests</td><td>Repetitive, regression, data-driven tests</td></tr>
+            <tr><td><strong>Speed</strong></td><td>Slower — human executes each step</td><td>Very fast — runs hundreds of tests in minutes</td></tr>
+            <tr><td><strong>Cost</strong></td><td>Low initial cost, higher long-term effort</td><td>Higher initial setup, lower long-term effort</td></tr>
+            <tr><td><strong>Human judgement</strong></td><td class="yes">✅ Required — great for UI/UX feedback</td><td class="no">❌ Cannot judge "does this look right?"</td></tr>
+            <tr><td><strong>Consistency</strong></td><td>Can vary — humans get tired</td><td class="yes">✅ Always consistent — same steps every run</td></tr>
+            <tr><td><strong>New features</strong></td><td class="yes">✅ Best — explore before automating</td><td class="no">❌ Not ideal until feature is stable</td></tr>
+            <tr><td><strong>Learn first</strong></td><td class="yes">✅ Yes — start here</td><td>After manual skills are solid</td></tr>
+          </tbody>
+        </table>
+        <div class="tip-box">Rule of thumb: Test manually first to understand the feature. Once a test is stable and needs to run repeatedly, automate it with Playwright.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ PLAYWRIGHT ═══ -->
+  <div class="tut-pane" id="tab-playwright">
+
+    <div class="rwe">
+      <div class="rwe-label">Example — Read This First</div>
+      <div class="rwe-story">
+        Imagine you work at an e-commerce company. Every time your team adds a new feature — like a new checkout flow or a payment option — you need to test it on 10 different browsers and 5 different screen sizes. That is 50 tests. Doing it manually every day takes hours and delays releases.
+        <br><br>
+        <strong>Playwright runs all 50 tests automatically in under 2 minutes.</strong>
+      </div>
+    </div>
+
+    <div class="lesson open">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">1</div>
+        <span class="lesson-title">What is Playwright?</span>
+        <span class="lesson-badge">Understanding</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">📺</div>
+          <div>
+            <div class="simple-label">Simple Explanation — Anyone Can Understand</div>
+            <div class="simple-text">
+              You know how a TV remote controls the television without you going up to it and pressing buttons? Playwright is like a remote control for websites. It can open a browser, click buttons, fill forms, and tell you if something went wrong — all on its own, without any human clicking!
+            </div>
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation — For Engineering Students</div>
+          <div class="tech-text">
+            Playwright is an open-source end-to-end testing framework developed by Microsoft. It automates Chromium, Firefox, and WebKit browsers through a single unified API. It supports TypeScript and JavaScript. Key features include parallel test execution, network request interception, mobile device emulation, and built-in trace/video reporting for debugging.
+          </div>
+        </div>
+        <div class="tip-box">Playwright is open-source and is trusted by companies like Microsoft and Google.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">2</div>
+        <span class="lesson-title">Installation — VS Code + Playwright Setup</span>
+        <span class="lesson-badge">Setup</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🖥️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              We use <strong>Visual Studio Code (VS Code)</strong> as our editor. It is the most widely used code editor in the industry. Once VS Code is set up, we install the Playwright extension inside it — which lets you run, debug, and even record tests by clicking through the browser, without writing a single line of code manually.
+            </div>
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            The official VS Code extension for Playwright (<code>ms-playwright.playwright</code>) integrates with VS Code's Test Explorer panel. It enables one-click test execution, inline pass/fail indicators, step-through debugging with breakpoints, and Codegen — a test recorder that watches your browser actions and generates TypeScript test code automatically.
+          </div>
+        </div>
+
+        <p style="font-size:14px;color:var(--ink2);margin:14px 0 8px;font-weight:800;">Step 1 — Install VS Code</p>
+        <ul class="steps-list">
+          <li data-n="1">Go to <strong>code.visualstudio.com</strong> and download VS Code for your operating system (Windows / Mac / Linux)</li>
+          <li data-n="2">Run the installer and open VS Code once installation is complete</li>
+        </ul>
+
+        <p style="font-size:14px;color:var(--ink2);margin:14px 0 8px;font-weight:800;">Step 2 — Install Node.js</p>
+        <ul class="steps-list">
+          <li data-n="1">Go to <strong>nodejs.org</strong> and download the <strong>LTS version</strong> (Long Term Support — the stable one)</li>
+          <li data-n="2">Run the installer with default settings</li>
+          <li data-n="3">Open VS Code → press <strong>Ctrl + `</strong> (backtick) to open the built-in terminal → verify with:</li>
+        </ul>
+        <div class="code-wrap">
+          <span class="code-lang-tag">VS Code Terminal</span>
+          <pre><span class="c-key">node</span> --version     <span class="c-comment"># should show v18.0.0 or higher</span>
+<span class="c-key">npm</span> --version      <span class="c-comment"># should show 9 or higher</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <p style="font-size:14px;color:var(--ink2);margin:14px 0 8px;font-weight:800;">Step 3 — Install the Playwright Extension in VS Code</p>
+        <ul class="steps-list">
+          <li data-n="1">In VS Code, click the <strong>Extensions icon</strong> on the left sidebar (four squares icon)</li>
+          <li data-n="2">Search for <strong>Playwright Test for VSCode</strong></li>
+          <li data-n="3">Click <strong>Install</strong> on the extension by Microsoft</li>
+        </ul>
+
+        <p style="font-size:14px;color:var(--ink2);margin:14px 0 8px;font-weight:800;">Step 4 — Create a New Playwright Project</p>
+        <ul class="steps-list">
+          <li data-n="1">In VS Code, open the <strong>Command Palette</strong> with <strong>Ctrl + Shift + P</strong></li>
+          <li data-n="2">Type <strong>Install Playwright</strong> and select it from the list</li>
+          <li data-n="3">A setup panel opens — choose these options:</li>
+        </ul>
+        <div class="code-wrap">
+          <span class="code-lang-tag">Setup Options</span>
+          <pre><span class="c-comment">Language      →</span> <span class="c-str">TypeScript</span>
+<span class="c-comment">Test folder   →</span> <span class="c-str">tests</span>
+<span class="c-comment">GitHub CI     →</span> <span class="c-str">Yes</span>
+<span class="c-comment">Browsers      →</span> <span class="c-str">Chromium, Firefox, WebKit (tick all three)</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <ul class="steps-list">
+          <li data-n="4">Click <strong>OK</strong> — VS Code will download all browser binaries automatically</li>
+        </ul>
+
+        <p style="font-size:14px;color:var(--ink2);margin:14px 0 8px;font-weight:800;">Step 5 — Run Your First Test from VS Code</p>
+        <ul class="steps-list">
+          <li data-n="1">Click the <strong>Testing icon</strong> on the left sidebar (looks like a flask/beaker)</li>
+          <li data-n="2">You will see the example tests that were created during setup</li>
+          <li data-n="3">Click the <strong>▶ Run All Tests</strong> button at the top</li>
+          <li data-n="4">Tests run — green tick means pass, red cross means fail</li>
+          <li data-n="5">To open the detailed HTML report, run this in the VS Code terminal:</li>
+        </ul>
+        <div class="code-wrap">
+          <span class="code-lang-tag">VS Code Terminal</span>
+          <pre><span class="c-key">npx playwright show-report</span>   <span class="c-comment"># opens report in browser</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <p style="font-size:14px;color:var(--ink2);margin:14px 0 8px;font-weight:800;">Bonus — Record a Test Without Writing Code</p>
+        <ul class="steps-list">
+          <li data-n="1">Open Command Palette → <strong>Ctrl + Shift + P</strong></li>
+          <li data-n="2">Type <strong>Record New</strong> and select <strong>Record new test</strong></li>
+          <li data-n="3">A browser opens — click through your app as a normal user</li>
+          <li data-n="4">VS Code automatically writes the TypeScript test code as you click</li>
+          <li data-n="5">Stop the recording — the test file is saved and ready to run</li>
+        </ul>
+        <div class="tip-box">The Record feature is very useful for beginners — you interact with the app normally and Playwright generates the test code for you. You can then review and refine it.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">3</div>
+        <span class="lesson-title">Writing Your First Test — Login Page</span>
+        <span class="lesson-badge">Practice</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🏫</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Think of a security checkpoint. It checks — is this person authorised to enter? A login test does the same — it verifies the right user gets in with valid credentials, and anyone with wrong credentials is blocked with a clear error message.
+            </div>
+          </div>
+        </div>
+        <div class="rwe">
+          <div class="rwe-label">Example — What We Are Testing</div>
+          <div class="rwe-story">
+            A banking app has a login screen. We want to make sure:
+            <br>✅ Correct email + password → goes to the account home page
+            <br>❌ Wrong password entered → shows "Incorrect credentials"
+            <br>❌ Empty password field → shows "Please enter your password"
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            <code>test.describe()</code> groups related tests together. <code>page.fill()</code> types text into an input field. <code>page.click()</code> presses a button. <code>expect(page).toHaveURL()</code> verifies that the browser navigated to the correct page. Each test runs in a completely fresh browser tab — no shared data between tests.
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">TypeScript</span>
+          <pre><span class="c-comment">// File: tests/login.spec.ts</span>
+<span class="c-key">import</span> { test, expect } <span class="c-key">from</span> <span class="c-str">'@playwright/test'</span>;
+
+test.describe(<span class="c-str">'Bank App — Login Page'</span>, () => {
+
+  <span class="c-comment">// ✅ Test 1: Correct login — should go to home page</span>
+  test(<span class="c-str">'valid user can log in successfully'</span>, <span class="c-key">async</span> ({ page }) => {
+    <span class="c-key">await</span> page.goto(<span class="c-str">'https://mybank.com/login'</span>);
+
+    <span class="c-comment">// Type the mobile number</span>
+    <span class="c-key">await</span> page.fill(<span class="c-str">'#mobile'</span>, <span class="c-str">'9876543210'</span>);
+
+    <span class="c-comment">// Type the PIN</span>
+    <span class="c-key">await</span> page.fill(<span class="c-str">'#pin'</span>, <span class="c-str">'1234'</span>);
+
+    <span class="c-comment">// Click the Login button</span>
+    <span class="c-key">await</span> page.click(<span class="c-str">'button[type="submit"]'</span>);
+
+    <span class="c-comment">// Verify: Did we reach the home page?</span>
+    <span class="c-key">await</span> expect(page).toHaveURL(<span class="c-str">'/home'</span>);
+    <span class="c-key">await</span> expect(page.locator(<span class="c-str">'h1'</span>)).toContainText(<span class="c-str">'Welcome'</span>);
+  });
+
+  <span class="c-comment">// ❌ Test 2: Wrong PIN — should show an error message</span>
+  test(<span class="c-str">'wrong PIN shows error message'</span>, <span class="c-key">async</span> ({ page }) => {
+    <span class="c-key">await</span> page.goto(<span class="c-str">'https://mybank.com/login'</span>);
+    <span class="c-key">await</span> page.fill(<span class="c-str">'#mobile'</span>, <span class="c-str">'9876543210'</span>);
+    <span class="c-key">await</span> page.fill(<span class="c-str">'#pin'</span>, <span class="c-str">'9999'</span>);  <span class="c-comment">// wrong PIN</span>
+    <span class="c-key">await</span> page.click(<span class="c-str">'button[type="submit"]'</span>);
+
+    <span class="c-comment">// The error message must appear on screen</span>
+    <span class="c-key">await</span> expect(page.locator(<span class="c-str">'.error-message'</span>)).toBeVisible();
+    <span class="c-key">await</span> expect(page.locator(<span class="c-str">'.error-message'</span>))
+      .toContainText(<span class="c-str">'Incorrect PIN'</span>);
+  });
+
+});</pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">Notice we tested both the good path (correct login) AND the bad path (wrong PIN). Always test both — that is what makes a thorough QA tester!</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">4</div>
+        <span class="lesson-title">Page Object Model — Keeping Code Organised</span>
+        <span class="lesson-badge">Good Practice</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🗂️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Think of organising files on a computer. You keep documents in one folder, images in another, and code in another. Page Object Model does the same for test code — each page of the application gets its own separate file. Everything is organised and easy to find.
+            </div>
+          </div>
+        </div>
+        <div class="rwe">
+          <div class="rwe-label">Example — Why This Matters</div>
+          <div class="rwe-story">
+            Your team has 30 test files all using <code>page.fill('#password', ...)</code>. Tomorrow the developer renames that field to <code>#user-password</code>. Without POM, you update all 30 files — that takes half a day. <strong>With POM, you update just one file — done in a minute.</strong>
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">TypeScript</span>
+          <pre><span class="c-comment">// File: pages/LoginPage.ts  ← One neat file for the login page</span>
+<span class="c-key">import</span> { Page, Locator } <span class="c-key">from</span> <span class="c-str">'@playwright/test'</span>;
+
+<span class="c-key">export class</span> <span class="c-fn">LoginPage</span> {
+  <span class="c-key">readonly</span> mobileInput: Locator;
+  <span class="c-key">readonly</span> pinInput: Locator;
+  <span class="c-key">readonly</span> loginButton: Locator;
+  <span class="c-key">readonly</span> errorMessage: Locator;
+
+  <span class="c-key">constructor</span>(<span class="c-key">private</span> page: Page) {
+    <span class="c-comment">// Define where each element is located on the page</span>
+    <span class="c-key">this</span>.mobileInput  = page.locator(<span class="c-str">'#mobile'</span>);
+    <span class="c-key">this</span>.pinInput      = page.locator(<span class="c-str">'#pin'</span>);
+    <span class="c-key">this</span>.loginButton   = page.locator(<span class="c-str">'button[type="submit"]'</span>);
+    <span class="c-key">this</span>.errorMessage  = page.locator(<span class="c-str">'.error-message'</span>);
+  }
+
+  <span class="c-comment">// One helper action that performs the full login</span>
+  <span class="c-key">async</span> <span class="c-fn">login</span>(mobile: <span class="c-key">string</span>, pin: <span class="c-key">string</span>) {
+    <span class="c-key">await this</span>.page.goto(<span class="c-str">'/login'</span>);
+    <span class="c-key">await this</span>.mobileInput.fill(mobile);
+    <span class="c-key">await this</span>.pinInput.fill(pin);
+    <span class="c-key">await this</span>.loginButton.click();
+  }
+}
+
+<span class="c-comment">// ─────────────────────────────────────────────
+// File: tests/login.spec.ts  ← Now much cleaner!</span>
+<span class="c-key">import</span> { LoginPage } <span class="c-key">from</span> <span class="c-str">'../pages/LoginPage'</span>;
+
+test(<span class="c-str">'manager login test'</span>, <span class="c-key">async</span> ({ page }) => {
+  <span class="c-key">const</span> loginPage = <span class="c-key">new</span> <span class="c-fn">LoginPage</span>(page);
+  <span class="c-key">await</span> loginPage.login(<span class="c-str">'9000012345'</span>, <span class="c-str">'5678'</span>);
+  <span class="c-key">await</span> expect(page).toHaveURL(<span class="c-str">'/manager-home'</span>);
+});</pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">5</div>
+        <span class="lesson-title">Automated Testing in CI/CD — Tests That Run Themselves</span>
+        <span class="lesson-badge">DevOps</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🎯</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Think of a quality check that runs automatically every time something changes on an assembly line. No one has to press a button — it just happens. CI/CD works the same way. Every time a developer saves new code, all tests run automatically. If something breaks, the team is notified immediately.
+            </div>
+          </div>
+        </div>
+        <div class="rwe">
+          <div class="rwe-label">Example</div>
+          <div class="rwe-story">
+            A developer adds a new feature at 3 PM. The moment the code is saved to GitHub, 150 tests run automatically on a cloud computer. By 3:07 PM the team gets a notification: "✅ All 150 tests passed — safe to release." Or "❌ 3 tests failed — do not release yet." No manual work needed.
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">GitHub Actions — YAML Config File</span>
+          <pre><span class="c-comment"># File: .github/workflows/playwright.yml
+# This tells GitHub: run our tests every time code is saved</span>
+
+<span class="c-key">name:</span> Playwright Test Suite
+<span class="c-key">on:</span>
+  push:
+    branches: [main]       <span class="c-comment"># run when code is pushed to main</span>
+  pull_request:
+    branches: [main]       <span class="c-comment"># run when someone wants to merge code</span>
+
+<span class="c-key">jobs:</span>
+  test:
+    <span class="c-key">runs-on:</span> ubuntu-latest  <span class="c-comment"># use a cloud computer</span>
+    <span class="c-key">steps:</span>
+      - <span class="c-key">uses:</span> actions/checkout@v4
+      - <span class="c-key">uses:</span> actions/setup-node@v4
+        <span class="c-key">with:</span> { node-version: <span class="c-num">20</span> }
+      - <span class="c-key">run:</span> npm ci
+      - <span class="c-key">run:</span> npx playwright install --with-deps
+      - <span class="c-key">run:</span> npx playwright test
+      - <span class="c-key">uses:</span> actions/upload-artifact@v4
+        <span class="c-key">if:</span> always()
+        <span class="c-key">with:</span>
+          name: test-report
+          path: playwright-report/  <span class="c-comment"># save the report for team to review</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">GitHub Actions works with public repositories and is a good way for students to practise CI/CD with their own projects.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ GEN AI ═══ -->
+  <div class="tut-pane" id="tab-genai">
+
+    <div class="rwe">
+      <div class="rwe-label">Example — Read This First</div>
+      <div class="rwe-story">
+        Imagine you need to prepare 100 test questions for a subject. That would take days. But if you tell an AI: "Write 100 multiple choice questions about networking with 4 options each" — it produces all 100 in under a minute.
+        <br><br>
+        <strong>QA testers use Gen AI the same way.</strong> Describe the feature, ask for test scenarios — the AI drafts them in seconds. You review, refine, and use them.
+      </div>
+    </div>
+
+    <div class="lesson open">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">1</div>
+        <span class="lesson-title">What is Generative AI?</span>
+        <span class="lesson-badge">Understanding</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">📖</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Imagine a student who has read every textbook, every newspaper, and every website ever written. Now ask that student any question — they give a detailed, well-structured answer because they have read so much! Generative AI is like that extraordinary student, but running on a computer. It can answer questions, write code, create reports, and much more.
+            </div>
+          </div>
+        </div>
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            Generative AI models (like GPT-4, Claude, Gemini) are Large Language Models (LLMs) trained on massive text datasets using transformer architecture. They predict the most likely next word/token based on the input context. For QA use cases, they understand natural language feature descriptions and produce structured outputs — test cases, scripts, defect reports — when given well-written prompts.
+          </div>
+        </div>
+        <div class="tip-box">⚠️ Important: AI can sometimes give confident but incorrect answers. Always review and verify AI-generated test cases before using them in your work.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">2</div>
+        <span class="lesson-title">Generating Test Cases Using AI</span>
+        <span class="lesson-badge">Core Skill</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">✍️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              A good teacher prepares different types of questions before an exam — easy ones, tricky ones, and "what if" ones. You can ask an AI to do the same for your app's features. Just describe the feature clearly and say "what can go wrong?" — the AI will suggest many test scenarios you may not have thought of!
+            </div>
+          </div>
+        </div>
+        <div class="rwe">
+          <div class="rwe-label">Example — Payment Feature Testing</div>
+          <div class="rwe-story">
+            You are testing the payment feature on an e-commerce app. You need to think of many ways it could fail — invalid card, insufficient balance, server timeout, duplicate payment, and more. Instead of typing all these manually, you describe the feature to AI and ask it to generate all scenarios at once.
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">AI Prompt — Copy and Use This</span>
+          <pre><span class="c-str">You are a senior QA engineer with 10 years of experience.
+
+I am testing a payment feature on an e-commerce app.
+Here are the rules of this feature:
+- User must be logged in to make a payment
+- Minimum payment amount: $1
+- Maximum payment amount: $10,000 per transaction
+- Accepted: Credit card or Debit card
+- Payment fails if card number is invalid
+- Transaction times out after 3 minutes if not completed
+
+Please generate test cases in this exact table format:
+Test ID | Test Title | Steps to Follow | Expected Result | Priority
+
+Include these types of tests:
+✅ 3 successful payment tests (happy path)
+❌ 5 failure tests (invalid card, wrong CVV, timeout, etc.)
+🔲 3 boundary tests (minimum $1, maximum $10,000, just above limit)
+⚡ 2 edge case tests (double tap on Pay button, network drops mid-payment)</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">The more clearly you describe the feature rules to the AI, the better and more accurate the test cases will be. Spend 2 minutes writing a good prompt to save 2 hours of manual work!</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">3</div>
+        <span class="lesson-title">Using AI to Understand a Test Failure</span>
+        <span class="lesson-badge">Debugging Help</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🔎</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              When a light bulb stops working, you might not know why. But if you show it to an electrician, they immediately say "The filament is broken — replace this part." AI does the same for test errors. You paste the error message and it explains: what went wrong, why it happened, and how to fix it — in simple, clear language.
+            </div>
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">AI Prompt — Debugging Help</span>
+          <pre><span class="c-str">Please analyse this Playwright test failure and explain:
+1. What went wrong (in simple words, as if explaining to a student)
+2. Why this error likely happened
+3. How to fix it — with a code example
+4. What extra test cases should I add to prevent this in future
+
+Error from CI pipeline:
+TimeoutError: page.click: Timeout 30000ms exceeded.
+  Waiting for locator('#submit-btn') to become visible
+  at LoginPage.login (pages/LoginPage.ts:18:5)
+  at Object.test (tests/login.spec.ts:24:5)
+Browser: chromium | Viewport: 1280x720
+Test: "valid user can log in successfully"</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">⚠️ Never paste real customer data, passwords, Aadhaar numbers, or any personal information into AI tools. Always use dummy data for testing and AI prompts.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">4</div>
+        <span class="lesson-title">Comparing Popular AI Tools for QA</span>
+        <span class="lesson-badge">Quick Reference</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🏪</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Just like different shops in a market are good at different things — one for vegetables, one for sweets, one for electronics — different AI tools are good at different QA tasks. Here is a comparison to help you choose the right one!
+            </div>
+          </div>
+        </div>
+        <table class="cmp-table">
+          <thead>
+            <tr><th>AI Tool</th><th>Best Used For</th><th>Writes Code</th><th>Works in IDE</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Claude</strong></td><td>Large test plans, reading full requirement documents, detailed analysis</td><td class="yes">✅ Yes</td><td class="no">—</td></tr>
+            <tr><td><strong>ChatGPT</strong></td><td>Brainstorming test scenarios, general QA questions</td><td class="yes">✅ Yes</td><td class="no">—</td></tr>
+            <tr><td><strong>GitHub Copilot</strong></td><td>Writing automation code directly while you type in VS Code</td><td class="yes">✅ Yes</td><td class="yes">✅ Yes</td></tr>
+            <tr><td><strong>Gemini</strong></td><td>Google Workspace integration, quick summaries</td><td class="yes">✅ Yes</td><td class="no">—</td></tr>
+          </tbody>
+        </table>
+        <div class="tip-box">A good combination: use Claude or ChatGPT to plan and write test cases, then use GitHub Copilot in VS Code to turn them into automation code.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ GHCP ═══ -->
+  <div class="tut-pane" id="tab-ghcp">
+
+    <div class="rwe">
+      <div class="rwe-label">Example — Read This First</div>
+      <div class="rwe-story">
+        When you type an SMS or WhatsApp message, your phone suggests the next word: "Happy" → "Birthday" → "to" → "you!" That is called predictive text.
+        <br><br>
+        <strong>GitHub Copilot is predictive text for writing code.</strong> You write a comment in plain English explaining what the test should do, and Copilot writes the full code for you. For QA engineers, this means writing Playwright tests 3 to 5 times faster than before!
+      </div>
+    </div>
+
+    <div class="lesson open">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">1</div>
+        <span class="lesson-title">What is GitHub Copilot and How to Set It Up</span>
+        <span class="lesson-badge">Getting Started</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">✈️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              In an aircraft, the co-pilot helps the main pilot — they read instruments, suggest routes, and handle some controls. GitHub Copilot is your coding co-pilot. You describe what you want to test, and it writes the code. You are always in charge — you decide which suggestions to keep and which to change!
+            </div>
+          </div>
+        </div>
+        <p style="font-size:14px;color:var(--ink2);margin:12px 0 8px;font-weight:700;">How to install in VS Code:</p>
+        <ul class="steps-list">
+          <li data-n="1">Open VS Code → Click the Extensions icon on the left sidebar</li>
+          <li data-n="2">Search for <strong>GitHub Copilot</strong> → Click Install</li>
+          <li data-n="3">Also search and install <strong>GitHub Copilot Chat</strong> (for asking questions)</li>
+          <li data-n="4">Sign in with your GitHub account when prompted</li>
+          <li data-n="5">Open any <code>.ts</code> test file and start typing — Copilot suggestions appear in faded grey text</li>
+          <li data-n="6">Press <strong>Tab</strong> to accept a suggestion, or <strong>Esc</strong> to ignore it</li>
+        </ul>
+        <div class="tip-box">GitHub Copilot offers a student plan through the GitHub Education programme — check education.github.com to apply.</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">2</div>
+        <span class="lesson-title">Copilot Writing a Full Test From Your Comment</span>
+        <span class="lesson-badge">See It in Action</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">💬</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              You describe what you want in a simple comment. Copilot reads your description and writes the full test code. You only type one line — Copilot types the next 20! It is like telling your helpful classmate "write this down for me" — and they do it neatly and correctly.
+            </div>
+          </div>
+        </div>
+        <div class="rwe">
+          <div class="rwe-label">What You Type vs What Copilot Writes</div>
+          <div class="rwe-story">You type only the comment on the first line. Copilot automatically suggests all the code below it:</div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">TypeScript — Copilot Demo</span>
+          <pre><span class="c-comment">// YOU TYPE THIS ONE COMMENT ↓
+// Test: student adds a course to cart on an ed-tech app, 
+// goes to checkout, and verifies the course name and price appear</span>
+
+<span class="c-comment">// COPILOT WRITES ALL OF THIS AUTOMATICALLY ↓</span>
+test(<span class="c-str">'add course to cart and verify checkout'</span>, <span class="c-key">async</span> ({ page }) => {
+  <span class="c-key">await</span> page.goto(<span class="c-str">'/courses'</span>);
+
+  <span class="c-comment">// Get the name of the first course on the page</span>
+  <span class="c-key">const</span> courseName = <span class="c-key">await</span> page
+    .locator(<span class="c-str">'.course-card:first-child .course-title'</span>)
+    .textContent();
+
+  <span class="c-comment">// Click Enroll Now</span>
+  <span class="c-key">await</span> page
+    .locator(<span class="c-str">'.course-card:first-child .enroll-btn'</span>)
+    .click();
+
+  <span class="c-comment">// Go to cart and verify the course appears</span>
+  <span class="c-key">await</span> page.click(<span class="c-str">'[data-testid="cart-icon"]'</span>);
+  <span class="c-key">await</span> expect(page.locator(<span class="c-str">'.cart-item-title'</span>))
+    .toContainText(courseName!);
+
+  <span class="c-comment">// Proceed to checkout</span>
+  <span class="c-key">await</span> page.click(<span class="c-str">'button:has-text("Proceed to Pay")'</span>);
+  <span class="c-key">await</span> expect(page).toHaveURL(<span class="c-str">'/checkout'</span>);
+});</pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">Write a detailed comment with the page name, user action, and what to verify. The more specific your comment, the better Copilot's suggestion!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ CLAUDE ═══ -->
+  <div class="tut-pane" id="tab-claude">
+
+    <div class="rwe">
+      <div class="rwe-label">Example — Read This First</div>
+      <div class="rwe-story">
+        Imagine you could hire the most experienced QA consultant in India — someone with 20 years of experience across banking, e-commerce, and healthcare apps. But they are available only for 1 hour and charge very high fees.
+        <br><br>
+        <strong>Claude AI gives you that same experienced QA expert, available any time.</strong> You paste your requirements and get a professional test plan, detailed test cases, or a structured bug report — in seconds!
+      </div>
+    </div>
+
+    <div class="lesson open">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">1</div>
+        <span class="lesson-title">Creating a Test Plan with Claude</span>
+        <span class="lesson-badge">Planning</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🗺️</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Before starting any project, a good team prepares a plan — what will be done, by whom, in what order, and what counts as complete. A test plan works the same way. Before testing begins, we plan what to test, how to test it, what risks exist, and when testing is considered done.
+            </div>
+          </div>
+        </div>
+        <div class="rwe">
+          <div class="rwe-label">Example — Test Plan</div>
+          <div class="rwe-story">Your team is adding a "Express Checkout" feature to a booking app. You need a complete test plan before testing begins. Just describe it to Claude:</div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">Claude Prompt — Test Plan</span>
+          <pre><span class="c-str">You are a QA lead with 10 years of experience.
+
+Create a complete test plan for this new feature:
+"A flight booking app is adding an Express Checkout feature.
+- Available only for registered users
+- Saves card details for one-click payment
+- Booking must be completed within 10 minutes of seat selection
+- Price is locked at the time of seat selection
+- Confirmation email is sent within 2 minutes of payment"
+
+Please include:
+1. Scope — what we will test and what we will NOT test
+2. Types of testing needed (functional, performance, security, etc.)
+3. Entry criteria — when testing can START
+4. Exit criteria — when testing is considered COMPLETE
+5. Risk areas — what could go wrong and cause problems
+6. Test case summary table (Successful booking, Failed booking, Edge cases)</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">Claude can read very long documents — you can paste your entire requirements PDF text and it will read everything before creating the plan!</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">2</div>
+        <span class="lesson-title">Writing a Professional Bug Report with Claude</span>
+        <span class="lesson-badge">Bug Reporting</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">📝</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              If you call your internet provider and say "my internet is broken!" they cannot help you easily. But if you say "My internet disconnects every evening between 7 PM and 9 PM, only on my laptop, not on my phone, and the router light goes orange" — they can find the problem quickly!
+              <br><br>
+              Claude helps you write bug reports that are so clear and complete, any developer can immediately understand and fix the issue.
+            </div>
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">Claude Prompt — Bug Report</span>
+          <pre><span class="c-str">Please format this as a professional bug report with these sections:
+Bug ID | Summary | Steps to Reproduce | Expected Result | 
+Actual Result | Severity (Critical / High / Medium / Low) |
+Affected Environment | Suggested Root Cause | Screenshots Needed
+
+Bug description (in my own words):
+"When a user tries to pay on the checkout page 
+and the cart has more than 5 items, the Pay Now button 
+stops responding. The page freezes for about 30 seconds 
+and then shows a blank white screen. The payment is NOT 
+processed. This issue happens only on Android phones using 
+Chrome browser. It works fine on desktop and iPhone."</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">After Claude formats the bug report, copy it directly into Jira, Bugzilla, or your team's tracking tool. This saves 15 to 20 minutes per bug report!</div>
+      </div>
+    </div>
+
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">3</div>
+        <span class="lesson-title">Let Claude Review Your Automation Code</span>
+        <span class="lesson-badge">Code Review</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">👨‍🏫</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Before submitting your assignment, a good teacher reviews it and says: "You missed this point. This answer is unclear. Add one more example here." Claude does the same for your test code — it finds weak spots, missing checks, and suggests better ways to write it. Like having a senior QA mentor review your work.
+            </div>
+          </div>
+        </div>
+        <div class="code-wrap">
+          <span class="code-lang-tag">Claude Prompt — Code Review</span>
+          <pre><span class="c-str">Please review this Playwright test code and tell me:
+
+🔴 Flakiness risks — will this test fail randomly sometimes?
+🟡 Missing assertions — what important things am I NOT checking?
+🟢 Edge cases I should add to make this test more complete
+🔵 Code quality improvements — how can I write this more cleanly?
+⭐ Overall rating: Beginner / Intermediate / Production-ready
+
+Explain each point clearly.
+
+[Paste your test code below this line]</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <div class="tip-box">This is very helpful for students who are just learning automation — Claude explains its feedback like a patient teacher, not just pointing out mistakes but explaining why!</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- CONTACT -->
+<div class="contact-wrap" id="contact">
+  <div class="section-head">
+    <div class="section-emoji">✉️</div>
+    <div class="section-tag">Reach Out</div>
+    <div class="section-title">Contact Me</div>
+    <div class="section-sub"></div>
+  </div>
+
+  <div class="contact-grid">
+    <a class="contact-card" href="mailto:karthickumar117@gmail.com">
+      <div class="contact-card-icon" style="background:var(--orange-bg);">📧</div>
+      <div>
+        <div class="contact-card-title">Email</div>
+        <div class="contact-card-value">karthickumar117@gmail.com</div>
+        <div class="contact-card-sub">For questions, collaboration, and mentoring</div>
+      </div>
+    </a>
+
+    <div class="contact-card" style="cursor:default;">
+      <div class="contact-card-icon" style="background:var(--sky);">💼</div>
+      <div>
+        <div class="contact-card-title">Experience</div>
+        <div class="contact-card-value">10+ Years in QA</div>
+        <div class="contact-card-sub">Playwright · API Testing · Gen AI</div>
+      </div>
+    </div>
+
+    <div class="contact-card" style="cursor:default;">
+      <div class="contact-card-icon" style="background:var(--purple-bg);">🎓</div>
+      <div>
+        <div class="contact-card-title">Tutorials</div>
+        <div class="contact-card-value">Open to All</div>
+        <div class="contact-card-sub">Tutorials are open to anyone — share with anyone.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-cta">
+    <a href="mailto:karthickumar117@gmail.com">📧 Write to Me</a>
+  </div>
+</div>
+
+<hr class="divider"/>
+
+<!-- COMMENT SECTION -->
+<div class="comment-wrap" id="comments">
+  <div class="section-head">
+    <div class="section-emoji">💬</div>
+    <div class="section-tag">Leave a Message</div>
+    <div class="section-title">Comments</div>
+    <div class="section-sub">Have a question about any tutorial, or just want to share a thought? Leave a comment below and it will reach me directly.</div>
+  </div>
+
+  <div class="comment-form">
+    <form id="commentForm">
+      <div class="form-row">
+        <textarea id="cf-message" name="message" placeholder="Write your comment or question here..." required></textarea>
+      </div>
+      <button type="submit" class="submit-btn" id="submitBtn">Send</button>
+      <div class="form-success" id="formSuccess">✅ Comment sent.</div>
+      <div class="form-error" id="formError">Something went wrong. Please email karthickumar117@gmail.com directly.</div>
+    </form>
+  </div>
+</div>
+
+<hr class="divider"/>
+<footer>
+  <p style="font-size:22px;margin-bottom:8px;">🙏</p>
+  <p><strong>Karthic Kumar T J</strong> — Senior QA Engineer</p>
+  <p style="margin-top:6px;">Playwright · TypeScript · API Testing · Gen AI</p>
+  <p style="margin-top:10px;">
+    <a href="mailto:karthickumar117@gmail.com" style="color:#7DD3FC;text-decoration:none;font-weight:700;">📧 karthickumar117@gmail.com</a>
+  </p>
+  <p style="margin-top:16px;font-size:12px;opacity:0.5;">Helping students and professionals learn software testing — one simple explanation at a time.</p>
+</footer>
+
+<script>
+// Comment form — Formspree
+// SETUP: replace YOUR_FORM_ID with your actual Formspree form ID
+const FORMSPREE_ID = 'YOUR_FORM_ID';
+
+document.getElementById('commentForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  const success = document.getElementById('formSuccess');
+  const error = document.getElementById('formError');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+  success.style.display = 'none';
+  error.style.display = 'none';
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(this)
+    });
+    if (res.ok) {
+      success.style.display = 'block';
+      this.reset();
+    } else {
+      error.style.display = 'block';
+    }
+  } catch {
+    error.style.display = 'block';
+  }
+  btn.disabled = false;
+  btn.textContent = 'Send Comment';
+});
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tut-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tut-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+  const pane = document.getElementById('tab-' + id);
+  pane.querySelectorAll('.lesson').forEach((l, i) => {
+    if (i === 0) l.classList.add('open'); else l.classList.remove('open');
+  });
+}
+
+function toggleLesson(hdr) {
+  hdr.parentElement.classList.toggle('open');
+}
+
+function copyCode(btn) {
+  const pre = btn.closest('.code-wrap').querySelector('pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = orig, 2000);
+  });
+}
+</script>
+</body>
+</html>
