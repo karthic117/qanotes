@@ -148,6 +148,34 @@ hr.divider{border:none;height:1px;background:var(--border);margin:0;}
 .skill-analogy::before{content:"💡";flex-shrink:0;}
 
 /* ── TUTORIALS ── */
+.tab-count{
+  margin-left:auto;background:rgba(99,102,241,0.12);color:#6366f1;
+  font-size:10px;font-weight:800;padding:1px 7px;border-radius:20px;
+  min-width:22px;text-align:center;
+}
+.tut-tab.active .tab-count{background:rgba(255,255,255,0.2);color:white;}
+.tut-search-wrap{padding:8px 6px 10px;border-bottom:1.5px solid var(--border);margin-bottom:8px;}
+.tut-search{
+  width:100%;padding:7px 10px 7px 32px;border-radius:8px;
+  border:1.5px solid var(--border);background:white;
+  font-family:'Nunito',sans-serif;font-size:12px;color:var(--ink);
+  outline:none;transition:border-color 0.15s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:10px center;
+}
+.tut-search:focus{border-color:#6366f1;}
+.tut-search::placeholder{color:#94a3b8;}
+.search-results{display:none;position:absolute;background:white;border:1.5px solid var(--border);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.1);z-index:100;width:320px;max-height:380px;overflow-y:auto;margin-top:4px;}
+.search-results.visible{display:block;}
+.search-result-item{padding:10px 14px;cursor:pointer;border-bottom:1px solid #f1f5f9;transition:background 0.1s;}
+.search-result-item:last-child{border-bottom:none;}
+.search-result-item:hover{background:#f5f3ff;}
+.search-result-item .sr-tab{font-size:10px;color:#6366f1;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px;}
+.search-result-item .sr-title{font-size:13px;color:var(--ink);font-weight:700;}
+.search-result-item .sr-match{color:#6366f1;}
+.search-no-result{padding:16px;text-align:center;font-size:13px;color:#94a3b8;}
+.tut-sidebar{position:relative;}
+
 .tut-layout{display:grid;grid-template-columns:200px 1fr;gap:0;align-items:start;}
 .tut-sidebar{background:#f8fafc;border-right:1.5px solid var(--border);border-radius:12px 0 0 12px;padding:12px 10px;position:sticky;top:80px;}
 .tut-tabs{display:flex;flex-direction:column;gap:2px;}
@@ -360,16 +388,20 @@ footer strong{color:white;font-weight:800;}
 
   <div class="tut-layout">
   <div class="tut-sidebar">
+    <div class="tut-search-wrap">
+      <input class="tut-search" id="lessonSearch" type="text" placeholder="Search lessons..." autocomplete="off" />
+      <div class="search-results" id="searchResults"></div>
+    </div>
     <div class="tut-tabs">
-      <button class="tut-tab active" onclick="showTab('manual',this)">📋 Manual Testing</button>
-      <button class="tut-tab" onclick="showTab('apitesting',this)">🔌 API Testing</button>
-      <button class="tut-tab" onclick="showTab('devtools',this)">🛠️ Dev Tools</button>
-      <button class="tut-tab" onclick="showTab('playwright',this)">🎭 Playwright</button>
-      <button class="tut-tab" onclick="showTab('typescript',this)">📘 TypeScript</button>
+      <button class="tut-tab active" onclick="showTab('manual',this)">📋 Manual Testing <span class="tab-count">9</span></button>
+      <button class="tut-tab" onclick="showTab('apitesting',this)">🔌 API Testing <span class="tab-count">9</span></button>
+      <button class="tut-tab" onclick="showTab('devtools',this)">🛠️ Dev Tools <span class="tab-count">6</span></button>
+      <button class="tut-tab" onclick="showTab('playwright',this)">🎭 Playwright <span class="tab-count">10</span></button>
+      <button class="tut-tab" onclick="showTab('typescript',this)">📘 TypeScript <span class="tab-count">13</span></button>
       <button class="tut-tab" onclick="showTab('tseditor',this)">🖥️ Try TypeScript</button>
-      <button class="tut-tab" onclick="showTab('genai',this)">🤖 Gen AI for QA</button>
-      <button class="tut-tab" onclick="showTab('mscopilot',this)">🪟 MS Copilot</button>
-      <button class="tut-tab" onclick="showTab('claude',this)">✦ Claude AI</button>
+      <button class="tut-tab" onclick="showTab('genai',this)">🤖 Gen AI for QA <span class="tab-count">12</span></button>
+      <button class="tut-tab" onclick="showTab('mscopilot',this)">🪟 MS Copilot <span class="tab-count">8</span></button>
+      <button class="tut-tab" onclick="showTab('claude',this)">✦ Claude AI <span class="tab-count">16</span></button>
     </div>
   </div>
   <div class="tut-content">
@@ -6846,6 +6878,119 @@ Write professionally for project manager and dev team.</span></pre>
 </footer>
 
 <script>
+// ══ LESSON SEARCH ═══════════════════════════════════════
+function buildSearchIndex() {
+  var index = [];
+  var tabNames = {
+    'tab-manual':     '📋 Manual Testing',
+    'tab-apitesting': '🔌 API Testing',
+    'tab-devtools':   '🛠️ Dev Tools',
+    'tab-playwright': '🎭 Playwright',
+    'tab-typescript': '📘 TypeScript',
+    'tab-tseditor':   '🖥️ Try TypeScript',
+    'tab-genai':      '🤖 Gen AI for QA',
+    'tab-mscopilot':  '🪟 MS Copilot',
+    'tab-claude':     '✦ Claude AI',
+  };
+  var tabIds = Object.keys(tabNames);
+  tabIds.forEach(function(tabId) {
+    var pane = document.getElementById(tabId);
+    if (!pane) return;
+    var lessons = pane.querySelectorAll('.lesson');
+    lessons.forEach(function(lesson, idx) {
+      var titleEl = lesson.querySelector('.lesson-title');
+      var numEl   = lesson.querySelector('.lesson-num');
+      if (!titleEl) return;
+      index.push({
+        tabId:    tabId,
+        tabName:  tabNames[tabId],
+        tabKey:   tabId.replace('tab-', ''),
+        lessonEl: lesson,
+        num:      numEl ? numEl.textContent.trim() : (idx + 1),
+        title:    titleEl.textContent.trim()
+      });
+    });
+  });
+  return index;
+}
+
+var searchIndex = [];
+var searchInput, searchResults;
+
+window.addEventListener('load', function() {
+  searchIndex = buildSearchIndex();
+  searchInput  = document.getElementById('lessonSearch');
+  searchResults = document.getElementById('searchResults');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', function() {
+    var q = this.value.trim().toLowerCase();
+    if (q.length < 2) { searchResults.classList.remove('visible'); return; }
+
+    var matches = searchIndex.filter(function(item) {
+      return item.title.toLowerCase().includes(q) ||
+             item.tabName.toLowerCase().includes(q);
+    }).slice(0, 8);
+
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="search-no-result">No lessons found</div>';
+    } else {
+      searchResults.innerHTML = matches.map(function(item) {
+        var hi = item.title.replace(new RegExp('(' + q + ')', 'gi'),
+                   '<span class="sr-match">$1</span>');
+        return '<div class="search-result-item" data-tab="' + item.tabKey +
+               '" data-idx="' + item.num + '">' +
+               '<div class="sr-tab">' + item.tabName + '</div>' +
+               '<div class="sr-title">Lesson ' + item.num + ' — ' + hi + '</div>' +
+               '</div>';
+      }).join('');
+    }
+    searchResults.classList.add('visible');
+
+    searchResults.querySelectorAll('.search-result-item').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var tabKey = this.getAttribute('data-tab');
+        var lessonNum = parseInt(this.getAttribute('data-idx'));
+
+        // Find and click the right tab button
+        var btn = null;
+        document.querySelectorAll('.tut-tab').forEach(function(b) {
+          if (b.getAttribute('onclick') && b.getAttribute('onclick').indexOf("'" + tabKey + "'") > -1) btn = b;
+        });
+        if (btn) showTab(tabKey, btn);
+
+        // Open the lesson
+        setTimeout(function() {
+          var pane = document.getElementById('tab-' + tabKey);
+          if (!pane) return;
+          var lessons = pane.querySelectorAll('.lesson');
+          lessons.forEach(function(l) { l.classList.remove('open'); });
+          var target = pane.querySelector('.lesson-num');
+          pane.querySelectorAll('.lesson').forEach(function(l) {
+            var num = l.querySelector('.lesson-num');
+            if (num && parseInt(num.textContent) === lessonNum) {
+              l.classList.add('open');
+              setTimeout(function() {
+                l.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }, 100);
+            }
+          });
+        }, 200);
+
+        searchInput.value = '';
+        searchResults.classList.remove('visible');
+      });
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+      searchResults.classList.remove('visible');
+    }
+  });
+});
+
 // ══ TAB SWITCHING ════════════════════════════════════════
 function showTab(id, btn) {
   var pane = document.getElementById('tab-' + id);
