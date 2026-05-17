@@ -52,12 +52,17 @@ nav{
 }
 .nav-logo{font-size:18px;font-weight:900;background:linear-gradient(135deg,#fbbf24,#b45309);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-0.5px;}
 .nav-logo span{color:var(--ink);-webkit-text-fill-color:var(--ink);}
-.nav-links{display:flex;gap:2px;}
+.nav-links{display:flex;gap:2px;flex-wrap:wrap;}
 .nav-links a{
   font-size:13px;font-weight:700;color:var(--ink2);
   text-decoration:none;padding:7px 14px;border-radius:8px;transition:all 0.15s;
 }
 .nav-links a:hover{background:var(--blue-pale);color:var(--blue);}
+@media(max-width:520px){
+  nav{padding:0 1rem;height:auto;min-height:56px;flex-wrap:wrap;gap:4px;padding-top:8px;padding-bottom:8px;}
+  .nav-logo{font-size:16px;}
+  .nav-links a{font-size:11px;padding:5px 8px;}
+}
 
 /* ── HERO ── */
 .hero{
@@ -110,6 +115,33 @@ nav{
   .hero-layout{flex-direction:column;text-align:center;}
   .welcome-card{margin:0 auto;}
   .hero-desc{margin:0 auto 1.75rem;}
+}
+@media(max-width:480px){
+  .nav-inner{padding:0 1rem;}
+  .nav-links{gap:8px;}
+  .nav-links a{font-size:12px;padding:4px 8px;}
+  .hero-inner{padding:2rem 1rem;}
+  .section-wrap{padding:2.5rem 1rem;}
+  .section-title{font-size:22px;}
+  .rwe{padding:1rem;}
+  .rwe-story{font-size:13px;}
+  .lesson-title{font-size:13px;}
+  .lesson-hdr{gap:8px;padding:14px 12px;}
+  .lesson-body{padding:14px 12px;}
+  .simple-box{flex-direction:column;gap:8px;}
+  .tech-box{padding:12px;}
+  .tech-text{font-size:12px;}
+  .tip-box{font-size:12px;padding:10px 12px;}
+  .cmp-table{font-size:11px;}
+  .cmp-table th,.cmp-table td{padding:6px 8px;}
+  .code-wrap pre{font-size:10px;}
+  pre{overflow-x:auto;max-width:100%;}
+  .tut-search-wrap{padding:6px 4px 8px;}
+  .tut-search{font-size:12px;}
+  .search-results{width:calc(100vw - 40px);}
+  .contact-wrap{padding:2rem 1rem;}
+  .comment-wrap{padding:2rem 1rem;}
+  .footer-inner{padding:2rem 1rem;}
 }
 
 /* ── SECTIONS ── */
@@ -193,10 +225,12 @@ hr.divider{border:none;height:1px;background:var(--border);margin:0;}
 .tut-pane.active{display:block;}
 @media(max-width:700px){
   .tut-layout{grid-template-columns:1fr;}
-  .tut-sidebar{border-radius:12px 12px 0 0;border-right:none;border-bottom:1.5px solid var(--border);position:static;}
+  .tut-sidebar{border-radius:12px 12px 0 0;border-right:none;border-bottom:1.5px solid var(--border);position:static;padding:10px 8px;}
   .tut-tabs{flex-direction:row;flex-wrap:wrap;gap:4px;}
   .tut-tab{padding:7px 12px;font-size:12px;width:auto;}
+  .tut-tab .tab-count{display:none;}
   .tut-content{padding:1rem 0 0 0;}
+  .search-results{width:calc(100vw - 40px);left:0;}
 }
 
 /* ── INTRO BOX ── */
@@ -239,6 +273,16 @@ hr.divider{border:none;height:1px;background:var(--border);margin:0;}
 .lesson.open .lesson-chevron{transform:rotate(180deg);color:var(--blue);}
 .lesson-body{display:none;padding:0 1.5rem 1.5rem;}
 .lesson.open .lesson-body{display:block;}
+@media(max-width:480px){
+  .lesson-hdr{padding:12px;gap:8px;}
+  .lesson-title{font-size:13px;}
+  .lesson-badge{display:none;}
+  .lesson-body{padding:0 12px 12px;}
+  .simple-box{padding:12px;flex-direction:column;}
+  .simple-text{font-size:13px;}
+  .tech-text{font-size:12px;}
+  .tip-box{font-size:12px;}
+}
 
 /* ── BOXES ── */
 .simple-box{
@@ -272,7 +316,8 @@ hr.divider{border:none;height:1px;background:var(--border);margin:0;}
   padding:1.25rem;margin:10px 0;position:relative;overflow-x:auto;
   border:1px solid #1e293b;
 }
-.code-wrap pre{font-family:'Fira Code',monospace;font-size:13px;color:#e2e8f0;line-height:1.7;white-space:pre;}
+.code-wrap pre{font-family:'Fira Code',monospace;font-size:13px;color:#e2e8f0;line-height:1.7;white-space:pre;max-width:100%;}
+@media(max-width:480px){.code-wrap pre{font-size:11px;}.code-wrap{padding:1rem 0.75rem;}}
 .c-comment{color:#475569;}.c-key{color:#7dd3fc;}.c-str{color:#86efac;}.c-fn{color:#c084fc;}.c-num{color:#fcd34d;}
 .code-lang-tag{position:absolute;top:8px;right:12px;font-family:'Fira Code',monospace;font-size:10px;color:#334155;letter-spacing:1px;text-transform:uppercase;background:#1e293b;padding:2px 8px;border-radius:4px;}
 .copy-btn{position:absolute;bottom:8px;right:10px;font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;padding:4px 12px;border-radius:6px;background:rgba(255,255,255,0.07);color:#94a3b8;border:1px solid rgba(255,255,255,0.1);cursor:pointer;transition:all 0.15s;}
@@ -285,7 +330,7 @@ hr.divider{border:none;height:1px;background:var(--border);margin:0;}
 .steps-list li::before{content:attr(data-n);position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:6px;background:var(--blue);color:white;font-size:11px;font-weight:900;display:flex;align-items:center;justify-content:center;}
 
 /* ── TABLE ── */
-.cmp-table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);}
+.cmp-table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .cmp-table th{background:#f8fafc;padding:10px 14px;text-align:left;font-weight:800;font-size:12px;color:var(--ink2);border-bottom:2px solid var(--border);}
 .cmp-table td{padding:10px 14px;border-bottom:1px solid #f1f5f9;color:var(--ink2);}
 .cmp-table tr:last-child td{border-bottom:none;}
@@ -402,6 +447,7 @@ footer strong{color:white;font-weight:800;}
       <button class="tut-tab" onclick="showTab('genai',this)">🤖 Gen AI for QA <span class="tab-count">12</span></button>
       <button class="tut-tab" onclick="showTab('mscopilot',this)">🪟 MS Copilot <span class="tab-count">8</span></button>
       <button class="tut-tab" onclick="showTab('claude',this)">✦ Claude AI <span class="tab-count">16</span></button>
+      <button class="tut-tab" onclick="showTab('mcp',this)">🔗 MCP <span class="tab-count">3</span></button>
     </div>
   </div>
   <div class="tut-content">
@@ -2300,7 +2346,7 @@ test(<span class="c-str">'DELETE /users/2 returns 204 No Content'</span>, <span 
           </div>
         </div>
 
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
           <div style="background:#1a1a2e;padding:8px 16px;display:flex;align-items:center;gap:8px;">
             <div style="display:flex;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></div><div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;"></div><div style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></div></div>
             <span style="color:#94a3b8;font-size:11px;font-family:sans-serif;">Chrome Browser — DevTools</span>
@@ -2357,7 +2403,7 @@ test(<span class="c-str">'DELETE /users/2 returns 204 No Content'</span>, <span 
           </div>
         </div>
 
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
           <div style="background:#1e293b;padding:6px 10px;display:flex;gap:4px;overflow-x:auto;">
             <span style="color:#94a3b8;font-size:10px;padding:3px 10px;font-family:sans-serif;">Elements</span>
             <span style="color:#94a3b8;font-size:10px;padding:3px 10px;font-family:sans-serif;">Console</span>
@@ -2450,7 +2496,7 @@ test(<span class="c-str">'DELETE /users/2 returns 204 No Content'</span>, <span 
           </div>
         </div>
 
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
           <div style="background:#1e293b;padding:6px 10px;display:flex;gap:4px;">
             <span style="background:#3b82f6;color:white;font-size:10px;padding:3px 10px;border-radius:4px;font-family:sans-serif;font-weight:700;">Elements</span>
             <span style="color:#94a3b8;font-size:10px;padding:3px 10px;font-family:sans-serif;">Console</span>
@@ -2515,7 +2561,7 @@ test(<span class="c-str">'DELETE /users/2 returns 204 No Content'</span>, <span 
           </div>
         </div>
 
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
           <div style="background:#1e293b;padding:6px 10px;display:flex;gap:4px;">
             <span style="color:#94a3b8;font-size:10px;padding:3px 10px;font-family:sans-serif;">Console</span>
             <span style="color:#94a3b8;font-size:10px;padding:3px 10px;font-family:sans-serif;">Network</span>
@@ -2595,7 +2641,7 @@ test(<span class="c-str">'DELETE /users/2 returns 204 No Content'</span>, <span 
           </div>
         </div>
 
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
           <div style="background:#1e293b;padding:6px 10px;display:flex;gap:4px;align-items:center;">
             <span style="color:#94a3b8;font-size:10px;padding:3px 10px;font-family:sans-serif;">Elements</span>
             <span style="background:#ef4444;color:white;font-size:10px;padding:3px 10px;border-radius:4px;font-family:sans-serif;font-weight:700;">Console</span>
@@ -2653,7 +2699,7 @@ test(<span class="c-str">'DELETE /users/2 returns 204 No Content'</span>, <span 
           </div>
         </div>
 
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
           <div style="background:#1e1e1e;padding:8px 16px;display:flex;align-items:center;gap:8px;">
             <div style="display:flex;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></div><div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;"></div><div style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></div></div>
             <span style="color:#94a3b8;font-size:11px;font-family:sans-serif;">VS Code — login.spec.ts (Debugging)</span>
@@ -5738,7 +5784,7 @@ test(<span class="c-str">'valid user can log in'</span>, <span class="c-key">asy
         </div>
 
         <!-- SVG: What Claude is -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <!-- Google Search mockup -->
   <div style="background:white;padding:12px 16px;border-bottom:1px solid #e5e7eb;">
     <div style="display:flex;align-items:center;gap:10px;">
@@ -5762,7 +5808,7 @@ test(<span class="c-str">'valid user can log in'</span>, <span class="c-key">asy
   </div>
 </div>
         <p style="text-align:center;font-size:11px;color:#6b7280;font-family:sans-serif;margin-top:8px;">⬆️ Google gives you links. Claude gives you answers.</p>
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <!-- Claude chat mockup -->
   <div style="background:#1a1a2e;padding:10px 16px;display:flex;align-items:center;gap:10px;">
     <span style="color:#c084fc;font-weight:900;font-size:16px;font-family:sans-serif;">✦ Claude</span>
@@ -5823,7 +5869,7 @@ test(<span class="c-str">'valid user can log in'</span>, <span class="c-key">asy
         </div>
 
         <!-- SVG: Three models -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <div style="background:#1a1a2e;padding:10px 16px;">
     <span style="color:#c084fc;font-weight:900;font-size:14px;font-family:sans-serif;">✦ Claude — Model Selector</span>
   </div>
@@ -5950,7 +5996,7 @@ test(<span class="c-str">'valid user can log in'</span>, <span class="c-key">asy
         </div>
 
         <!-- SVG: Artifact layout -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <div style="background:#1a1a2e;padding:8px 16px;display:flex;align-items:center;gap:8px;">
     <span style="color:#c084fc;font-weight:900;font-size:14px;font-family:sans-serif;">✦ Claude</span>
     <span style="color:#4b5563;font-size:10px;font-family:sans-serif;">claude.ai</span>
@@ -6031,7 +6077,7 @@ test(<span class="c-str">'valid user can log in'</span>, <span class="c-key">asy
         </div>
 
         <!-- SVG: Projects -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <div style="background:#1a1a2e;padding:8px 16px;">
     <span style="color:#c084fc;font-weight:900;font-size:14px;font-family:sans-serif;">✦ Claude — Projects</span>
   </div>
@@ -6113,7 +6159,7 @@ test(<span class="c-str">'valid user can log in'</span>, <span class="c-key">asy
         </div>
 
         <!-- SVG: Two levels of customisation -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <div style="background:#1a1a2e;padding:8px 16px;">
     <span style="color:#c084fc;font-weight:900;font-size:14px;font-family:sans-serif;">✦ Claude — Settings</span>
   </div>
@@ -6193,7 +6239,7 @@ When I paste an error message:
         </div>
 
         <!-- SVG: Features menu -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <div style="background:#1a1a2e;padding:8px 16px;">
     <span style="color:#c084fc;font-weight:900;font-size:14px;font-family:sans-serif;">✦ Claude</span>
   </div>
@@ -6296,7 +6342,7 @@ When I paste an error message:
         </div>
 
         <!-- SVG: Weak vs Strong prompt -->
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
   <div style="background:#1a1a2e;padding:8px 16px;">
     <span style="color:#c084fc;font-weight:900;font-size:14px;font-family:sans-serif;">✦ Claude — Prompt Quality Comparison</span>
   </div>
@@ -6761,6 +6807,386 @@ Write professionally for project manager and dev team.</span></pre>
 
   </div>
 
+  <!-- ═══ MCP ═══ -->
+  <div class="tut-pane" id="tab-mcp">
+
+    <div class="rwe">
+      <div class="rwe-label">Read This First — What is MCP and Why Should QA Engineers Care?</div>
+      <div class="rwe-story">
+        Imagine you are testing an app. Normally you would open Jira to read the ticket, copy the details, paste them into VS Code, write the test, run it, copy the result, and paste it somewhere else. A lot of back and forth.<br><br>
+        <strong>What if VS Code could just do all of that for you?</strong> Read the Jira ticket directly. Check the GitHub code changes. Open a browser, click through the app, and tell you what it found — all without you switching tabs or copying anything.<br><br>
+        That is exactly what <strong>MCP (Model Context Protocol)</strong> enables. It connects VS Code and GitHub Copilot to your real tools — Jira, GitHub, Playwright, your file system — so Copilot can take actions, not just write code suggestions.<br><br>
+        This section teaches you what MCP is and how to set up <strong>Playwright MCP in VS Code</strong> — so GitHub Copilot can open a real browser, test your app, and report back to you, all from inside your editor.
+      </div>
+    </div>
+
+    <!-- LESSON 1 -->
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">1</div>
+        <span class="lesson-title">What is MCP? — Model Context Protocol Explained Simply</span>
+        <span class="lesson-badge">Start Here</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🔗</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Think of MCP like a USB port for AI. Your laptop has a USB port — you can plug in a keyboard, a mouse, a hard drive, or a camera. The laptop does not need to know in advance what you will plug in. It just has a standard port that anything can connect to.<br><br>
+              <strong>MCP is the same idea — but for AI assistants.</strong> It is a standard way for AI tools like Claude to connect to external services — your file system, your browser, your Jira board, your database — without needing a custom integration for each one.
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+          <div style="background:#1a1a2e;padding:8px 16px;">
+            <span style="color:#a855f7;font-weight:900;font-size:13px;font-family:sans-serif;">🔗 How MCP Works</span>
+          </div>
+          <div style="background:white;padding:16px;">
+            <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center;margin-bottom:16px;">
+              <div style="background:#f5f3ff;border:2px solid #7c3aed;border-radius:10px;padding:12px;text-align:center;">
+                <div style="font-size:24px;margin-bottom:4px;">✦</div>
+                <div style="font-size:12px;font-weight:800;color:#4c1d95;font-family:sans-serif;">Claude AI</div>
+                <div style="font-size:10px;color:#6b7280;font-family:sans-serif;margin-top:3px;">Your AI assistant</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-size:20px;">⟷</div>
+                <div style="font-size:9px;color:#6b7280;font-family:sans-serif;font-weight:700;">MCP<br>Protocol</div>
+              </div>
+              <div style="background:#eff6ff;border:2px solid #3b82f6;border-radius:10px;padding:12px;text-align:center;">
+                <div style="font-size:24px;margin-bottom:4px;">🖥️</div>
+                <div style="font-size:12px;font-weight:800;color:#1d4ed8;font-family:sans-serif;">MCP Server</div>
+                <div style="font-size:10px;color:#6b7280;font-family:sans-serif;margin-top:3px;">Bridge / Translator</div>
+              </div>
+              <div style="text-align:center;">
+                <div style="font-size:20px;">⟷</div>
+                <div style="font-size:9px;color:#6b7280;font-family:sans-serif;font-weight:700;">API /<br>Direct</div>
+              </div>
+              <div style="background:#f0fdf4;border:2px solid #22c55e;border-radius:10px;padding:12px;text-align:center;">
+                <div style="font-size:11px;font-weight:800;color:#15803d;font-family:sans-serif;margin-bottom:6px;">External Tools</div>
+                <div style="font-size:10px;color:#374151;font-family:sans-serif;line-height:1.8;">🌐 Browser<br>📋 Jira<br>💻 GitHub<br>🗄️ Database<br>📁 File System</div>
+              </div>
+            </div>
+            <div style="background:#fefce8;border:1px solid #fde047;border-radius:8px;padding:10px 14px;font-size:11px;color:#713f12;font-family:sans-serif;line-height:1.6;">
+              <strong>Without MCP:</strong> You manually copy-paste content between your tools and Claude.<br>
+              <strong>With MCP:</strong> Claude reads from your tools directly, takes actions, and reports back.
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-box">
+          <div class="tech-label">Technical Explanation</div>
+          <div class="tech-text">
+            <strong>MCP (Model Context Protocol)</strong> is an open standard developed by Anthropic. It uses a client-server architecture:<br><br>
+            — <strong>MCP Host</strong>: The AI application (Claude Desktop, Claude.ai) that uses external tools<br>
+            — <strong>MCP Client</strong>: Lives inside the host — manages connections to MCP servers<br>
+            — <strong>MCP Server</strong>: A programme that exposes capabilities to the AI<br><br>
+            <strong>Three things MCP servers can provide:</strong><br>
+            — <strong>Tools</strong>: Actions the AI can take — "run this test", "create a Jira ticket"<br>
+            — <strong>Resources</strong>: Data the AI can read — "read this file", "get this API response"<br>
+            — <strong>Prompts</strong>: Pre-built prompt templates for common tasks<br><br>
+            <strong>Real MCP examples for QA:</strong><br>
+            — <strong>Filesystem MCP</strong>: Claude reads your test files directly<br>
+            — <strong>GitHub MCP</strong>: Claude checks pull requests and writes test cases for new features<br>
+            — <strong>Jira MCP</strong>: Claude reads tickets and generates test plans<br>
+            — <strong>Playwright MCP</strong>: Claude controls a real browser and runs tests<br>
+            — <strong>Database MCP</strong>: Claude queries your database to verify test results
+          </div>
+        </div>
+        <div class="tip-box">MCP is open source — any tool can build an MCP server. A growing list already supports it: GitHub, Jira, Slack, Google Drive, PostgreSQL, and more. See the full list at <strong>github.com/modelcontextprotocol/servers</strong></div>
+      </div>
+    </div>
+
+    <!-- LESSON 2 -->
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">2</div>
+        <span class="lesson-title">Playwright MCP — Let Claude Control a Real Browser for QA</span>
+        <span class="lesson-badge">Playwright MCP</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">🎭</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              Playwright MCP gives Claude the ability to control a real web browser. You type instructions in plain English — "go to the login page, enter these credentials, click Login, tell me what happens" — and Claude actually opens a browser, performs each step, takes screenshots, and reports back. No code needed from you.
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+          <div style="background:#1a1a2e;padding:8px 16px;">
+            <span style="color:#a855f7;font-weight:900;font-size:13px;font-family:sans-serif;">🎭 Playwright MCP — How it Works</span>
+          </div>
+          <div style="background:white;padding:16px;display:grid;gap:10px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;background:#f5f3ff;border-radius:8px;padding:10px 14px;">
+              <span style="font-size:20px;flex-shrink:0;">1️⃣</span>
+              <div>
+                <div style="font-size:12px;font-weight:800;color:#4c1d95;font-family:sans-serif;">You type in Claude chat</div>
+                <div style="font-size:11px;color:#374151;font-family:monospace;margin-top:4px;background:white;padding:6px 10px;border-radius:4px;border:1px solid #e9d5ff;">"Go to https://myapp.com/login. Enter wrong password. Tell me what error appears."</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:#eff6ff;border-radius:8px;padding:10px 14px;">
+              <span style="font-size:20px;flex-shrink:0;">2️⃣</span>
+              <div>
+                <div style="font-size:12px;font-weight:800;color:#1d4ed8;font-family:sans-serif;">Claude controls the browser via Playwright MCP</div>
+                <div style="font-size:11px;color:#374151;font-family:sans-serif;margin-top:4px;">Opens Chrome → navigates → fills fields → clicks → reads page → takes screenshot</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;background:#f0fdf4;border-radius:8px;padding:10px 14px;">
+              <span style="font-size:20px;flex-shrink:0;">3️⃣</span>
+              <div>
+                <div style="font-size:12px;font-weight:800;color:#15803d;font-family:sans-serif;">Claude reports back</div>
+                <div style="font-size:11px;color:#374151;font-family:sans-serif;margin-top:4px;">"The error 'Invalid credentials' appeared in red below the password field. Screenshot attached."</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-box">
+          <div class="tech-label">Setup — Step by Step</div>
+          <div class="tech-text">
+            <strong>Requirements:</strong> Node.js + Claude Desktop app (free at claude.ai/download)<br><br>
+            <strong>Step 1 — Install Playwright MCP:</strong><br>
+            <code>npm install -g @playwright/mcp</code><br><br>
+            <strong>Step 2 — Configure Claude Desktop:</strong><br>
+            Open Claude Desktop → Settings → Developer → Edit Config<br>
+            Add this to <code>claude_desktop_config.json</code>:<br><br>
+            <code style="display:block;background:#f8fafc;padding:8px 12px;border-radius:6px;margin:6px 0;font-size:11px;">{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}</code><br>
+            <strong>Step 3 — Restart Claude Desktop</strong><br>
+            The browser tools appear in Claude's tools menu (the plug icon 🔌).<br><br>
+            <strong>Step 4 — Test it:</strong><br>
+            Type: <em>"Navigate to https://example.com and tell me what you see"</em>
+          </div>
+        </div>
+
+        <div class="code-wrap">
+          <span class="code-lang-tag">Playwright MCP — QA Prompts to Try</span>
+          <pre><span class="c-comment">── Explore a page ──────────────────────────────────────</span>
+<span class="c-str">Go to https://myapp.com/login
+Take a screenshot and describe everything you see.
+List all input fields, buttons, and links on the page.</span>
+
+<span class="c-comment">── Test a login scenario ───────────────────────────────</span>
+<span class="c-str">Go to https://myapp.com/login
+Fill email: test@example.com
+Fill password: wrongpassword
+Click Login button
+Tell me what happens — what error appears, if any.
+Take a screenshot of the result.</span>
+
+<span class="c-comment">── Verify a bug ────────────────────────────────────────</span>
+<span class="c-str">I have a bug: login button does not respond on mobile.
+Go to https://myapp.com/login
+Set viewport to 375px wide (mobile size)
+Try clicking the login button
+Tell me if it responds. Take a screenshot.</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <table class="cmp-table">
+          <thead><tr><th>Task</th><th>Without Playwright MCP</th><th>With Playwright MCP</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Explore new feature</strong></td><td>Open browser manually, describe to Claude</td><td class="yes">Claude navigates and sees it directly</td></tr>
+            <tr><td><strong>Verify a bug</strong></td><td>Reproduce manually, screenshot, paste to Claude</td><td class="yes">Ask Claude to reproduce — it reports back</td></tr>
+            <tr><td><strong>Check mobile layout</strong></td><td>Manually resize or use DevTools</td><td class="yes">Ask Claude to set mobile viewport</td></tr>
+            <tr><td><strong>Generate test cases</strong></td><td>Describe the page from memory</td><td class="yes">Claude sees actual page and writes cases</td></tr>
+          </tbody>
+        </table>
+        <div class="tip-box">Playwright MCP works best with <strong>Claude Desktop</strong>. Download it free at <strong>claude.ai/download</strong>. It is the most powerful way to combine AI and browser automation — no code required.</div>
+      </div>
+    </div>
+
+    <!-- LESSON 3 -->
+    <div class="lesson">
+      <div class="lesson-hdr" onclick="toggleLesson(this)">
+        <div class="lesson-num">3</div>
+        <span class="lesson-title">Setting Up Playwright MCP in VS Code — Step by Step</span>
+        <span class="lesson-badge">VS Code Setup</span>
+        <span class="lesson-chevron">⌄</span>
+      </div>
+      <div class="lesson-body">
+        <div class="simple-box">
+          <div class="simple-icon">💻</div>
+          <div>
+            <div class="simple-label">Simple Explanation</div>
+            <div class="simple-text">
+              VS Code has a built-in GitHub Copilot chat panel. You can connect Playwright MCP to this panel so that GitHub Copilot inside VS Code can control a real browser — just like Claude Desktop does. This means you can write tests, ask Copilot to run them in a browser, and see the results — all without leaving VS Code.
+            </div>
+          </div>
+        </div>
+
+        <!-- VS Code Setup Mockup -->
+        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
+          <div style="background:#1e1e1e;padding:8px 16px;display:flex;align-items:center;gap:8px;">
+            <div style="display:flex;gap:6px;"><div style="width:10px;height:10px;border-radius:50%;background:#ef4444;"></div><div style="width:10px;height:10px;border-radius:50%;background:#f59e0b;"></div><div style="width:10px;height:10px;border-radius:50%;background:#22c55e;"></div></div>
+            <span style="color:#94a3b8;font-size:11px;font-family:sans-serif;">Visual Studio Code</span>
+          </div>
+          <div style="display:grid;grid-template-columns:40px 1fr 280px;background:#1e1e1e;min-height:200px;">
+            <!-- Activity bar -->
+            <div style="background:#2c2c2c;display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:12px;">
+              <div style="font-size:16px;">📄</div>
+              <div style="font-size:16px;">🔍</div>
+              <div style="font-size:16px;">🔀</div>
+              <div style="background:#7c3aed;border-radius:4px;padding:2px;font-size:16px;">🤖</div>
+              <div style="font-size:16px;">🔌</div>
+            </div>
+            <!-- Editor -->
+            <div style="padding:12px;font-family:monospace;font-size:10px;">
+              <div style="color:#6b7280;margin-bottom:8px;font-size:9px;">login.spec.ts</div>
+              <div style="color:#569cd6;">import <span style="color:#d4d4d4;">{'{'} test, expect {'}'}</span> from <span style="color:#ce9178;">'@playwright/test'</span>;</div>
+              <div style="color:#6b7280;margin-top:8px;">// Ask Copilot to generate tests</div>
+              <div style="color:#6b7280;">// and run them using Playwright MCP</div>
+              <div style="margin-top:8px;color:#569cd6;">test(<span style="color:#ce9178;">'login test'</span>, async ({'{'} page {'}'}) =&gt; {'{'}</div>
+              <div style="margin-left:12px;color:#d4d4d4;">await page.goto(<span style="color:#ce9178;">'/login'</span>);</div>
+              <div style="margin-left:12px;color:#d4d4d4;">await page.fill(<span style="color:#ce9178;">'#email'</span>, email);</div>
+              <div style="color:#569cd6;">{'}'});</div>
+            </div>
+            <!-- Copilot chat panel -->
+            <div style="background:#252526;border-left:1px solid #374151;padding:10px;font-family:sans-serif;font-size:10px;">
+              <div style="color:#a855f7;font-weight:700;margin-bottom:8px;">🤖 GitHub Copilot Chat</div>
+              <div style="background:#1e3a8a;border-radius:6px 6px 2px 6px;padding:6px 8px;margin-bottom:6px;color:#bfdbfe;font-size:9px;">Run the login test and tell me if the button is clickable</div>
+              <div style="background:#1e293b;border-radius:2px 6px 6px 6px;padding:6px 8px;margin-bottom:8px;color:#d4d4d4;font-size:9px;">
+                Using Playwright MCP...<br>
+                ✅ Navigated to /login<br>
+                ✅ Login button found: button[type=submit]<br>
+                ✅ Button is clickable<br>
+                📸 Screenshot taken
+              </div>
+              <div style="border-top:1px solid #374151;padding-top:8px;">
+                <input style="width:100%;background:#1e293b;border:1px solid #374151;border-radius:4px;padding:4px 8px;color:#94a3b8;font-size:9px;" placeholder="Ask Copilot..." />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tech-box">
+          <div class="tech-label">Complete Setup — Playwright MCP in VS Code</div>
+          <div class="tech-text">
+            <strong>Step 1 — Install Node.js</strong><br>
+            Download and install from <strong>nodejs.org</strong> (LTS version recommended). Verify in terminal:<br>
+            <code>node --version</code><br><br>
+
+            <strong>Step 2 — Install VS Code</strong><br>
+            Download from <strong>code.visualstudio.com</strong> — free.<br><br>
+
+            <strong>Step 3 — Install GitHub Copilot extension</strong><br>
+            — Open VS Code<br>
+            — Click Extensions icon (Ctrl+Shift+X)<br>
+            — Search <strong>"GitHub Copilot"</strong><br>
+            — Click Install<br>
+            — Sign in with your GitHub account<br><br>
+
+            <strong>Step 4 — Create MCP config file</strong><br>
+            Create a file called <code>.vscode/mcp.json</code> in your project folder with this content:<br>
+          </div>
+        </div>
+
+        <div class="code-wrap">
+          <span class="code-lang-tag">.vscode/mcp.json — Playwright MCP Config</span>
+          <pre>{
+  <span class="c-str">"servers"</span>: {
+    <span class="c-str">"playwright"</span>: {
+      <span class="c-str">"type"</span>: <span class="c-str">"stdio"</span>,
+      <span class="c-str">"command"</span>: <span class="c-str">"npx"</span>,
+      <span class="c-str">"args"</span>: [<span class="c-str">"@playwright/mcp@latest"</span>]
+    }
+  }
+}</pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <div class="tech-box">
+          <div class="tech-label">Steps 5 to 8 — Connect and Use</div>
+          <div class="tech-text">
+            <strong>Step 5 — Enable the MCP server in VS Code</strong><br>
+            — Open Copilot Chat panel (Ctrl+Alt+I or click the robot icon)<br>
+            — Click the <strong>Tools icon (⚙️)</strong> at the top of the chat<br>
+            — You should see <strong>Playwright</strong> in the list of available tools<br>
+            — Make sure it is enabled (toggle on)<br><br>
+
+            <strong>Step 6 — Switch to Agent mode</strong><br>
+            — In the Copilot chat input, click the dropdown that says <strong>"Ask"</strong><br>
+            — Switch it to <strong>"Agent"</strong> mode — this allows Copilot to use tools like Playwright MCP<br><br>
+
+            <strong>Step 7 — Use it</strong><br>
+            Type your instruction in the chat and press Enter. Copilot will use Playwright MCP to control the browser and report back.<br><br>
+
+            <strong>Step 8 — Verify it is working</strong><br>
+            Type: <em>"Take a screenshot of https://example.com"</em><br>
+            If Playwright MCP is connected, Copilot will open a browser, navigate, and return a screenshot.
+          </div>
+        </div>
+
+        <div class="code-wrap">
+          <span class="code-lang-tag">VS Code Copilot Agent — QA Prompts to Try</span>
+          <pre><span class="c-comment">── Explore and generate test cases ─────────────────────</span>
+<span class="c-str">Go to https://myapp.com/login using Playwright.
+Take a screenshot.
+Based on what you see, write Playwright test cases
+covering all the visible input fields and buttons.</span>
+
+<span class="c-comment">── Run a test scenario ─────────────────────────────────</span>
+<span class="c-str">Using Playwright, go to https://myapp.com/login
+Fill the email field with test@example.com
+Fill the password field with wrongpassword
+Click the Login button
+Tell me exactly what error message appears on screen.</span>
+
+<span class="c-comment">── Fix a failing test ──────────────────────────────────</span>
+<span class="c-str">My Playwright test is failing on the login page.
+Use Playwright MCP to open the login page and
+inspect the actual selectors for the email field,
+password field, and login button.
+Then update my test to use the correct selectors.</span>
+
+<span class="c-comment">── Verify a bug report ─────────────────────────────────</span>
+<span class="c-str">Bug report says: "Login button is not visible on
+screen size 375px wide."
+Use Playwright to open https://myapp.com/login
+at 375px viewport width.
+Take a screenshot and confirm if the bug exists.</span></pre>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+
+        <div class="tech-box">
+          <div class="tech-label">Troubleshooting Common Issues</div>
+          <div class="tech-text">
+            <strong>Playwright not showing in tools list:</strong><br>
+            — Check that <code>.vscode/mcp.json</code> is in the root of your project folder<br>
+            — Reload VS Code (Ctrl+Shift+P → "Reload Window")<br>
+            — Make sure Node.js is installed: <code>node --version</code> in terminal<br><br>
+
+            <strong>Copilot not using browser:</strong><br>
+            — Make sure you are in <strong>Agent mode</strong>, not Ask mode<br>
+            — Check that the Playwright tool is toggled ON in the Tools panel<br><br>
+
+            <strong>Browser opens but test fails:</strong><br>
+            — The selector might not match your app — ask Copilot to inspect the page first<br>
+            — Try: <em>"Inspect the login page and find the correct selector for the email field"</em><br><br>
+
+            <strong>npx command not found:</strong><br>
+            — Node.js is not installed or not in PATH<br>
+            — Install from nodejs.org and restart VS Code
+          </div>
+        </div>
+        <div class="tip-box">The key difference between VS Code and Claude Desktop setup: VS Code uses <code>.vscode/mcp.json</code> in your project folder. Claude Desktop uses <code>claude_desktop_config.json</code> in your system config folder. Both use the same <code>@playwright/mcp</code> package.</div>
+      </div>
+    </div>
+
+  </div>
+
   </div>
   </div>
 
@@ -6891,12 +7317,27 @@ function buildSearchIndex() {
     'tab-genai':      '🤖 Gen AI for QA',
     'tab-mscopilot':  '🪟 MS Copilot',
     'tab-claude':     '✦ Claude AI',
+    'tab-mcp':        '🔗 MCP',
   };
   var tabIds = Object.keys(tabNames);
   tabIds.forEach(function(tabId) {
     var pane = document.getElementById(tabId);
     if (!pane) return;
     var lessons = pane.querySelectorAll('.lesson');
+
+    // If tab has no lessons, add a tab-level entry so it still appears in search
+    if (lessons.length === 0) {
+      index.push({
+        tabId:    tabId,
+        tabName:  tabNames[tabId],
+        tabKey:   tabId.replace('tab-', ''),
+        num:      0,
+        title:    tabNames[tabId].replace(/^[^\w]+/, '').trim(),
+        isTabOnly: true
+      });
+      return;
+    }
+
     lessons.forEach(function(lesson, idx) {
       var titleEl = lesson.querySelector('.lesson-title');
       var numEl   = lesson.querySelector('.lesson-num');
@@ -6907,7 +7348,8 @@ function buildSearchIndex() {
         tabKey:   tabId.replace('tab-', ''),
         lessonEl: lesson,
         num:      numEl ? numEl.textContent.trim() : (idx + 1),
-        title:    titleEl.textContent.trim()
+        title:    titleEl.textContent.trim(),
+        isTabOnly: false
       });
     });
   });
@@ -6925,23 +7367,27 @@ window.addEventListener('load', function() {
 
   searchInput.addEventListener('input', function() {
     var q = this.value.trim().toLowerCase();
-    if (q.length < 2) { searchResults.classList.remove('visible'); return; }
+    if (q.length < 1) { searchResults.classList.remove('visible'); return; }
 
     var matches = searchIndex.filter(function(item) {
       return item.title.toLowerCase().includes(q) ||
-             item.tabName.toLowerCase().includes(q);
-    }).slice(0, 8);
+             item.tabName.toLowerCase().includes(q) ||
+             item.tabKey.toLowerCase().includes(q);
+    }).slice(0, 10);
 
     if (matches.length === 0) {
       searchResults.innerHTML = '<div class="search-no-result">No lessons found</div>';
     } else {
       searchResults.innerHTML = matches.map(function(item) {
-        var hi = item.title.replace(new RegExp('(' + q + ')', 'gi'),
+        var hi = item.title.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi'),
                    '<span class="sr-match">$1</span>');
+        var lessonLabel = item.isTabOnly
+          ? '<div class="sr-title">Open ' + item.tabName + '</div>'
+          : '<div class="sr-title">Lesson ' + item.num + ' — ' + hi + '</div>';
         return '<div class="search-result-item" data-tab="' + item.tabKey +
-               '" data-idx="' + item.num + '">' +
+               '" data-idx="' + item.num + '" data-tabonly="' + (item.isTabOnly ? '1' : '0') + '">' +
                '<div class="sr-tab">' + item.tabName + '</div>' +
-               '<div class="sr-title">Lesson ' + item.num + ' — ' + hi + '</div>' +
+               lessonLabel +
                '</div>';
       }).join('');
     }
@@ -6949,8 +7395,9 @@ window.addEventListener('load', function() {
 
     searchResults.querySelectorAll('.search-result-item').forEach(function(el) {
       el.addEventListener('click', function() {
-        var tabKey = this.getAttribute('data-tab');
+        var tabKey   = this.getAttribute('data-tab');
         var lessonNum = parseInt(this.getAttribute('data-idx'));
+        var tabOnly  = this.getAttribute('data-tabonly') === '1';
 
         // Find and click the right tab button
         var btn = null;
@@ -6959,13 +7406,18 @@ window.addEventListener('load', function() {
         });
         if (btn) showTab(tabKey, btn);
 
-        // Open the lesson
+        // If tab-only result, just open the tab — no specific lesson
+        if (tabOnly) {
+          searchInput.value = '';
+          searchResults.classList.remove('visible');
+          return;
+        }
+
+        // Open the specific lesson
         setTimeout(function() {
           var pane = document.getElementById('tab-' + tabKey);
           if (!pane) return;
-          var lessons = pane.querySelectorAll('.lesson');
-          lessons.forEach(function(l) { l.classList.remove('open'); });
-          var target = pane.querySelector('.lesson-num');
+          pane.querySelectorAll('.lesson').forEach(function(l) { l.classList.remove('open'); });
           pane.querySelectorAll('.lesson').forEach(function(l) {
             var num = l.querySelector('.lesson-num');
             if (num && parseInt(num.textContent) === lessonNum) {
