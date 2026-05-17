@@ -447,7 +447,7 @@ footer strong{color:white;font-weight:800;}
       <button class="tut-tab" onclick="showTab('genai',this)">🤖 Gen AI for QA <span class="tab-count">12</span></button>
       <button class="tut-tab" onclick="showTab('mscopilot',this)">🪟 MS Copilot <span class="tab-count">8</span></button>
       <button class="tut-tab" onclick="showTab('claude',this)">✦ Claude AI <span class="tab-count">16</span></button>
-      <button class="tut-tab" onclick="showTab('mcp',this)">🔗 MCP <span class="tab-count">3</span></button>
+      <button class="tut-tab" onclick="showTab('mcp',this)">🔗 MCP <span class="tab-count">2</span></button>
     </div>
   </div>
   <div class="tut-content">
@@ -6813,10 +6813,10 @@ Write professionally for project manager and dev team.</span></pre>
     <div class="rwe">
       <div class="rwe-label">Read This First — What is MCP and Why Should QA Engineers Care?</div>
       <div class="rwe-story">
-        Imagine you are testing an app. Normally you would open Jira to read the ticket, copy the details, paste them into VS Code, write the test, run it, copy the result, and paste it somewhere else. A lot of back and forth.<br><br>
-        <strong>What if VS Code could just do all of that for you?</strong> Read the Jira ticket directly. Check the GitHub code changes. Open a browser, click through the app, and tell you what it found — all without you switching tabs or copying anything.<br><br>
-        That is exactly what <strong>MCP (Model Context Protocol)</strong> enables. It connects VS Code and GitHub Copilot to your real tools — Jira, GitHub, Playwright, your file system — so Copilot can take actions, not just write code suggestions.<br><br>
-        This section teaches you what MCP is and how to set up <strong>Playwright MCP in VS Code</strong> — so GitHub Copilot can open a real browser, test your app, and report back to you, all from inside your editor.
+        As a QA engineer, you already use VS Code to write tests, Playwright to run them, and GitHub Copilot to help you code. But normally, Copilot can only <em>suggest</em> code — it cannot actually open a browser, click through your app, or see what happens on screen.<br><br>
+        <strong>MCP changes that.</strong> MCP (Model Context Protocol) is a way to give AI tools like GitHub Copilot the ability to connect to and control real external tools — including a real browser using Playwright.<br><br>
+        With Playwright MCP set up in VS Code, you can tell GitHub Copilot: <em>"Open our login page, enter wrong credentials, and tell me what error message appears."</em> Copilot will actually do it — open Chrome, go to the page, fill the fields, click the button, and report back what it saw. No manual testing needed from you.<br><br>
+        This section teaches you exactly what MCP is and how to set it up in VS Code step by step.
       </div>
     </div>
 
@@ -6903,115 +6903,6 @@ Write professionally for project manager and dev team.</span></pre>
     <div class="lesson">
       <div class="lesson-hdr" onclick="toggleLesson(this)">
         <div class="lesson-num">2</div>
-        <span class="lesson-title">Playwright MCP — Let Claude Control a Real Browser for QA</span>
-        <span class="lesson-badge">Playwright MCP</span>
-        <span class="lesson-chevron">⌄</span>
-      </div>
-      <div class="lesson-body">
-        <div class="simple-box">
-          <div class="simple-icon">🎭</div>
-          <div>
-            <div class="simple-label">Simple Explanation</div>
-            <div class="simple-text">
-              Playwright MCP gives Claude the ability to control a real web browser. You type instructions in plain English — "go to the login page, enter these credentials, click Login, tell me what happens" — and Claude actually opens a browser, performs each step, takes screenshots, and reports back. No code needed from you.
-            </div>
-          </div>
-        </div>
-
-        <div style="background:#f0f0f0;border-radius:12px;padding:0;margin:14px 0;overflow:hidden;overflow-x:auto;border:1px solid #d1d5db;box-shadow:0 4px 20px rgba(0,0,0,0.12);">
-          <div style="background:#1a1a2e;padding:8px 16px;">
-            <span style="color:#a855f7;font-weight:900;font-size:13px;font-family:sans-serif;">🎭 Playwright MCP — How it Works</span>
-          </div>
-          <div style="background:white;padding:16px;display:grid;gap:10px;">
-            <div style="display:flex;gap:12px;align-items:flex-start;background:#f5f3ff;border-radius:8px;padding:10px 14px;">
-              <span style="font-size:20px;flex-shrink:0;">1️⃣</span>
-              <div>
-                <div style="font-size:12px;font-weight:800;color:#4c1d95;font-family:sans-serif;">You type in Claude chat</div>
-                <div style="font-size:11px;color:#374151;font-family:monospace;margin-top:4px;background:white;padding:6px 10px;border-radius:4px;border:1px solid #e9d5ff;">"Go to https://myapp.com/login. Enter wrong password. Tell me what error appears."</div>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;background:#eff6ff;border-radius:8px;padding:10px 14px;">
-              <span style="font-size:20px;flex-shrink:0;">2️⃣</span>
-              <div>
-                <div style="font-size:12px;font-weight:800;color:#1d4ed8;font-family:sans-serif;">Claude controls the browser via Playwright MCP</div>
-                <div style="font-size:11px;color:#374151;font-family:sans-serif;margin-top:4px;">Opens Chrome → navigates → fills fields → clicks → reads page → takes screenshot</div>
-              </div>
-            </div>
-            <div style="display:flex;gap:12px;align-items:flex-start;background:#f0fdf4;border-radius:8px;padding:10px 14px;">
-              <span style="font-size:20px;flex-shrink:0;">3️⃣</span>
-              <div>
-                <div style="font-size:12px;font-weight:800;color:#15803d;font-family:sans-serif;">Claude reports back</div>
-                <div style="font-size:11px;color:#374151;font-family:sans-serif;margin-top:4px;">"The error 'Invalid credentials' appeared in red below the password field. Screenshot attached."</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="tech-box">
-          <div class="tech-label">Setup — Step by Step</div>
-          <div class="tech-text">
-            <strong>Requirements:</strong> Node.js + Claude Desktop app (free at claude.ai/download)<br><br>
-            <strong>Step 1 — Install Playwright MCP:</strong><br>
-            <code>npm install -g @playwright/mcp</code><br><br>
-            <strong>Step 2 — Configure Claude Desktop:</strong><br>
-            Open Claude Desktop → Settings → Developer → Edit Config<br>
-            Add this to <code>claude_desktop_config.json</code>:<br><br>
-            <code style="display:block;background:#f8fafc;padding:8px 12px;border-radius:6px;margin:6px 0;font-size:11px;">{
-  "mcpServers": {
-    "playwright": {
-      "command": "npx",
-      "args": ["@playwright/mcp@latest"]
-    }
-  }
-}</code><br>
-            <strong>Step 3 — Restart Claude Desktop</strong><br>
-            The browser tools appear in Claude's tools menu (the plug icon 🔌).<br><br>
-            <strong>Step 4 — Test it:</strong><br>
-            Type: <em>"Navigate to https://example.com and tell me what you see"</em>
-          </div>
-        </div>
-
-        <div class="code-wrap">
-          <span class="code-lang-tag">Playwright MCP — QA Prompts to Try</span>
-          <pre><span class="c-comment">── Explore a page ──────────────────────────────────────</span>
-<span class="c-str">Go to https://myapp.com/login
-Take a screenshot and describe everything you see.
-List all input fields, buttons, and links on the page.</span>
-
-<span class="c-comment">── Test a login scenario ───────────────────────────────</span>
-<span class="c-str">Go to https://myapp.com/login
-Fill email: test@example.com
-Fill password: wrongpassword
-Click Login button
-Tell me what happens — what error appears, if any.
-Take a screenshot of the result.</span>
-
-<span class="c-comment">── Verify a bug ────────────────────────────────────────</span>
-<span class="c-str">I have a bug: login button does not respond on mobile.
-Go to https://myapp.com/login
-Set viewport to 375px wide (mobile size)
-Try clicking the login button
-Tell me if it responds. Take a screenshot.</span></pre>
-          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-        </div>
-
-        <table class="cmp-table">
-          <thead><tr><th>Task</th><th>Without Playwright MCP</th><th>With Playwright MCP</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Explore new feature</strong></td><td>Open browser manually, describe to Claude</td><td class="yes">Claude navigates and sees it directly</td></tr>
-            <tr><td><strong>Verify a bug</strong></td><td>Reproduce manually, screenshot, paste to Claude</td><td class="yes">Ask Claude to reproduce — it reports back</td></tr>
-            <tr><td><strong>Check mobile layout</strong></td><td>Manually resize or use DevTools</td><td class="yes">Ask Claude to set mobile viewport</td></tr>
-            <tr><td><strong>Generate test cases</strong></td><td>Describe the page from memory</td><td class="yes">Claude sees actual page and writes cases</td></tr>
-          </tbody>
-        </table>
-        <div class="tip-box">Playwright MCP works best with <strong>Claude Desktop</strong>. Download it free at <strong>claude.ai/download</strong>. It is the most powerful way to combine AI and browser automation — no code required.</div>
-      </div>
-    </div>
-
-    <!-- LESSON 3 -->
-    <div class="lesson">
-      <div class="lesson-hdr" onclick="toggleLesson(this)">
-        <div class="lesson-num">3</div>
         <span class="lesson-title">Setting Up Playwright MCP in VS Code — Step by Step</span>
         <span class="lesson-badge">VS Code Setup</span>
         <span class="lesson-chevron">⌄</span>
