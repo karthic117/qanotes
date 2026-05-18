@@ -128,11 +128,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .btn-sec{display:inline-flex;align-items:center;gap:5px;padding:9px 14px;background:#fff;color:#555;border:1px solid #d0d0d0;border-radius:var(--radius);font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
 .btn-sec:hover{background:#f5f5f5;border-color:#aaa}
 .btn-sec svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.zip-toggle{display:none;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#555;cursor:pointer;padding:6px 10px;border:1px solid #d0d0d0;border-radius:var(--radius);background:#fff;transition:all .15s;white-space:nowrap}
-.zip-toggle:hover{background:#f5f5f5;border-color:#aaa}
-.zip-toggle input[type=checkbox]{width:14px;height:14px;accent-color:var(--c-blue-600);cursor:pointer;flex-shrink:0}
-.zip-toggle.show{display:inline-flex}
-.zip-toggle svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
 /* ── error ── */
 .err-box{display:none;margin-top:10px;padding:10px 12px 10px 38px;background:var(--c-red-50);border:1px solid var(--c-red-100);border-radius:var(--radius);font-size:13px;color:var(--c-red-800);position:relative;line-height:1.5}
@@ -219,9 +214,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .toc-note{font-size:11px;padding:6px 9px;border-radius:var(--radius-sm);margin-bottom:10px;line-height:1.5}
 .toc-inn .toc-note{background:var(--c-blue-100);color:var(--c-blue-800)}
 .toc-aa .toc-note{background:var(--c-purple-100);color:var(--c-purple-800)}
-.toc-entry,.toc-file-entry{background:#fff;border:1px solid #ddd;border-radius:var(--radius-sm);padding:11px 90px 11px 11px;margin-bottom:8px;position:relative}
-.toc-entry-rm{position:absolute;top:8px;right:8px;background:var(--c-red-50);border:1px solid var(--c-red-100);color:var(--c-red-600);border-radius:var(--radius-sm);padding:3px 10px;font-size:11px;font-weight:600;cursor:pointer;transition:background .15s;white-space:nowrap}
-.toc-entry-rm:hover{background:var(--c-red-100)}
+.toc-entry{background:#fff;border:1px solid #ddd;border-radius:var(--radius-sm);padding:11px;margin-bottom:8px;position:relative}
+.toc-entry-rm{position:absolute;top:8px;right:8px;background:none;border:1px solid var(--c-red-100);color:var(--c-red-600);border-radius:var(--radius-sm);padding:2px 7px;font-size:11px;cursor:pointer;transition:background .15s}
+.toc-entry-rm:hover{background:var(--c-red-50)}
 .url-ok{font-size:11px;color:var(--c-green-600);margin-top:3px}
 .url-err{font-size:11px;color:var(--c-red-600);margin-top:3px}
 .toc-add-btn{display:flex;align-items:center;justify-content:center;gap:5px;padding:8px;border:1px dashed #ccc;background:#fff;border-radius:var(--radius-sm);font-size:12px;font-weight:500;color:#888;cursor:pointer;margin-top:4px;width:100%;transition:all .15s}
@@ -262,9 +257,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .prog-bar{height:100%;background:var(--c-purple-600);border-radius:3px;transition:width .2s;width:0%}
 .ltest-stat{font-size:12px;font-weight:500;color:var(--c-purple-800);margin-top:8px;display:none;line-height:1.5}
 .ltest-stat.on{display:block}
-.ltest-zip-chk{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--c-purple-800);cursor:pointer;padding:6px 12px;border:1px solid var(--c-purple-100);background:#fff;border-radius:20px;transition:all .15s}
-.ltest-zip-chk:hover{background:var(--c-purple-50);border-color:var(--c-purple-400)}
-.ltest-zip-chk input:checked~svg{stroke:var(--c-purple-600)}
 
 /* ── toast ── */
 .toast{position:fixed;bottom:22px;right:22px;background:#2d3748;color:#f7fafc;padding:9px 16px;border-radius:var(--radius);font-size:12px;font-weight:500;opacity:0;transform:translateY(6px);transition:all .25s;pointer-events:none;z-index:9999}
@@ -369,7 +361,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="abar">
     <button class="btn-gen" onclick="genINN()"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Generate JSON</button>
     <button class="btn-dl" id="dl-inn" onclick="dlFile('inn')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download</button>
-    <label class="zip-toggle" id="zip-lbl-inn-manual" title="Download as ZIP"><input type="checkbox" id="zip-inn-manual" style="accent-color:var(--c-blue-600);width:14px;height:14px;cursor:pointer"/> <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ZIP</label>
     <button class="btn-sec" onclick="rstINN()"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Reset</button>
   </div>
   <div class="err-box" id="err-inn"></div>
@@ -398,18 +389,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="ltest-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 7h10M7 11h7"/></svg></div>
       <div>
         <div class="ltest-title">Load Test — In-Network Records</div>
-        <div class="ltest-sub">Generate 50–20,000 random valid in_network[ ] entries · stable on all 2GB+ machines</div>
+        <div class="ltest-sub">Generate 50–10,000 random valid in_network[ ] entries &nbsp;&middot;&nbsp; max 10,000 records per file</div>
       </div>
     </div>
     <div style="font-size:12px;color:#5b21b6;margin-bottom:10px;font-weight:500">Select record count:</div>
     <div class="ltest-counts">
       <button class="cnt-btn sel" onclick="selCount('inn',50,this)">50</button>
       <button class="cnt-btn" onclick="selCount('inn',100,this)">100</button>
-      <button class="cnt-btn" onclick="selCount('inn',500,this)">500</button>
-      <button class="cnt-btn" onclick="selCount('inn',1000,this)">1,000</button>
-      <button class="cnt-btn" onclick="selCount('inn',5000,this)">5,000</button>
-      <button class="cnt-btn" onclick="selCount('inn',10000,this)">10,000</button>
-      <div class="cnt-custom"><span style="font-size:12px;color:#5b21b6;font-weight:600">Custom:</span><input id="inn-custom-cnt" type="number" min="1" max="20000" value="" placeholder="e.g. 5000 (max 20,000)" oninput="selCount('inn',0,null)"/></div>
+      <button class="cnt-btn" onclick="selCount('inn',200,this)">200</button>
+      <button class="cnt-btn" onclick="selCount('inn',300,this)">300</button>
+      <div class="cnt-custom"><span style="font-size:12px;color:#5b21b6;font-weight:600">Custom:</span><input id="inn-custom-cnt" type="number" min="1" max="10000" value="" placeholder="e.g. 500 (max 10,000)" oninput="selCount('inn',0,null)"/></div>
     </div>
     <div class="ltest-opts">
       <label class="ltest-opt"><input type="checkbox" id="inn-mix-ctypes" checked/> Mix billing code types (CPT, HCPCS, MS-DRG, etc.)</label>
@@ -420,12 +409,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="ltest-limit" id="inn-limit-msg"></div>
     <div class="ltest-actions">
       <button class="btn-ltest" onclick="ltestGenINN()"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Generate &amp; Download</button>
-      <label class="ltest-zip-chk" id="zip-lbl-inn" title="Download as ZIP — recommended for large files">
-        <input type="checkbox" id="zip-inn"/>
-        <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download as ZIP
-      </label>
-      <span style="font-size:12px;color:#6d28d9" id="inn-ltest-note">764 bytes/record · 10,000 records ≈ 7 MB · 20,000 ≈ 15 MB (use ZIP) · Max 20,000</span>
+      <span style="font-size:12px;color:#6d28d9" id="inn-ltest-note">Each record ~700 bytes &nbsp;&middot;&nbsp; 10,000 records &asymp; 7 MB &nbsp;&middot;&nbsp; Do not exceed 10,000 records</span>
     </div>
     <div class="ltest-progress" id="inn-prog"><div class="prog-bar-wrap"><div class="prog-bar" id="inn-prog-bar"></div></div><span id="inn-prog-txt">Generating...</span></div>
     <div class="ltest-stat" id="inn-ltest-stat"></div>
@@ -480,7 +464,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="abar">
     <button class="btn-gen" onclick="genAA()"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Generate JSON</button>
     <button class="btn-dl" id="dl-aa" onclick="dlFile('aa')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download</button>
-    <label class="zip-toggle" id="zip-lbl-aa-manual" title="Download as ZIP"><input type="checkbox" id="zip-aa-manual" style="accent-color:var(--c-blue-600);width:14px;height:14px;cursor:pointer"/> <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ZIP</label>
     <button class="btn-sec" onclick="rstAA()"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Reset</button>
   </div>
   <div class="err-box" id="err-aa"></div>
@@ -509,18 +492,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="ltest-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 7h10M7 11h7"/></svg></div>
       <div>
         <div class="ltest-title">Load Test — Allowed Amount Records</div>
-        <div class="ltest-sub">Generate 50–20,000 random valid out_of_network[ ] entries · stable on all 2GB+ machines</div>
+        <div class="ltest-sub">Generate 50–10,000 random valid out_of_network[ ] entries &nbsp;&middot;&nbsp; max 10,000 records per file</div>
       </div>
     </div>
     <div style="font-size:12px;color:#5b21b6;margin-bottom:10px;font-weight:500">Select record count:</div>
     <div class="ltest-counts">
       <button class="cnt-btn sel" onclick="selCount('aa',50,this)">50</button>
       <button class="cnt-btn" onclick="selCount('aa',100,this)">100</button>
-      <button class="cnt-btn" onclick="selCount('aa',500,this)">500</button>
-      <button class="cnt-btn" onclick="selCount('aa',1000,this)">1,000</button>
-      <button class="cnt-btn" onclick="selCount('aa',5000,this)">5,000</button>
-      <button class="cnt-btn" onclick="selCount('aa',10000,this)">10,000</button>
-      <div class="cnt-custom"><span style="font-size:12px;color:#5b21b6;font-weight:600">Custom:</span><input id="aa-custom-cnt" type="number" min="1" max="100000" value="" placeholder="e.g. 5000 (max 1,00,000)" oninput="selCount('aa',0,null)"/></div>
+      <button class="cnt-btn" onclick="selCount('aa',200,this)">200</button>
+      <button class="cnt-btn" onclick="selCount('aa',300,this)">300</button>
+      <div class="cnt-custom"><span style="font-size:12px;color:#5b21b6;font-weight:600">Custom:</span><input id="aa-custom-cnt" type="number" min="1" max="10000" value="" placeholder="e.g. 500 (max 10,000)" oninput="selCount('aa',0,null)"/></div>
     </div>
     <div class="ltest-opts">
       <label class="ltest-opt"><input type="checkbox" id="aa-mix-ctypes" checked/> Mix billing code types</label>
@@ -530,12 +511,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="ltest-limit" id="aa-limit-msg"></div>
     <div class="ltest-actions">
       <button class="btn-ltest" onclick="ltestGenAA()"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>Generate &amp; Download</button>
-      <label class="ltest-zip-chk" id="zip-lbl-aa" title="Download as ZIP — recommended for large files">
-        <input type="checkbox" id="zip-aa"/>
-        <svg viewBox="0 0 24 24" style="width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download as ZIP
-      </label>
-      <span style="font-size:12px;color:#6d28d9" id="aa-ltest-note">962 bytes/record · 10,000 records ≈ 9 MB · 20,000 ≈ 19 MB (use ZIP) · Max 20,000</span>
+      <span style="font-size:12px;color:#6d28d9" id="aa-ltest-note">Each record ~800 bytes &nbsp;&middot;&nbsp; 10,000 records &asymp; 8 MB &nbsp;&middot;&nbsp; Do not exceed 10,000 records</span>
     </div>
     <div class="ltest-progress" id="aa-prog"><div class="prog-bar-wrap"><div class="prog-bar" id="aa-prog-bar"></div></div><span id="aa-prog-txt">Generating...</span></div>
     <div class="ltest-stat" id="aa-ltest-stat"></div>
@@ -579,7 +555,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="abar">
     <button class="btn-gen" onclick="genTOC()"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>Generate JSON</button>
     <button class="btn-dl" id="dl-toc" onclick="dlFile('toc')"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Download</button>
-    <label class="zip-toggle show" id="zip-lbl-toc-manual" title="Download as ZIP"><input type="checkbox" id="zip-toc-manual" style="accent-color:var(--c-blue-600);width:14px;height:14px;cursor:pointer"/> <svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> ZIP</label>
     <button class="btn-sec" onclick="rstTOC()"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>Reset</button>
   </div>
   <div class="err-box" id="err-toc"></div>
@@ -1171,7 +1146,7 @@ function buildTOC(id,d){
         '<span style="font-size:16px">💊</span>'+
         '<div><b>allowed_amount_file</b><div style="font-size:10px;color:#6b7280">Single object — only one allowed per plan (CMS schema)</div></div>'+
       '</div>'+
-      '<div class="toc-note">Single entry — one per plan (CMS schema). Needs <b>description</b> + <b>location URL</b> starting with <code>https://</code>. Click ✕ Remove to replace.</div>'+
+      '<div class="toc-note">One URL entry only. Needs a <b>description</b> and a <b>location URL</b> starting with <code>https://</code></div>'+
       '<div id="taa-'+id+'"></div>'+
       '<button class="add-sub" id="taabtn-'+id+'" style="border-color:#e9d5ff;color:#7e22ce;width:100%;justify-content:center;margin-top:4px" onclick="addTFAA(\''+id+'\',{})">＋ Set Allowed Amount File URL</button>'+
     '</div>';
@@ -1188,30 +1163,22 @@ function onTIT(id){
 function addTF(recId,type,d){
   var fid=uid();
   var cont=document.getElementById((type==='inn'?'tinn-':'taa-')+recId);
-  if(!cont)return;
   var entry=document.createElement('div');
-  entry.id='tf-'+fid;
-  entry.className='toc-file-entry';
-  var typeColor=type==='inn'?'var(--c-blue-800)':'var(--c-purple-800)';
-  var typeLabel=type==='inn'?'In-Network File':'Allowed Amount File';
+  entry.id='tf-'+fid;entry.className='toc-file-entry';
   entry.innerHTML=
     '<button class="toc-entry-rm" onclick="rmTF(\''+fid+'\',\''+recId+'\',\''+type+'\')">✕ Remove</button>'+
-    '<div style="font-size:11px;font-weight:700;color:'+typeColor+';margin-bottom:8px;padding-right:80px">'+typeLabel+'</div>'+
-    '<div class="g2">'+
-      '<div class="f">'+
-        '<label style="font-size:12px;font-weight:600">Description <span class="req">*</span></label>'+
-        '<input id="tfd-'+fid+'" placeholder="e.g. In-network negotiated rates"/>'+
-      '</div>'+
-      '<div class="f">'+
-        '<label style="font-size:12px;font-weight:600">Location URL <span class="req">*</span></label>'+
-        '<input id="tfl-'+fid+'" placeholder="https://..." oninput="checkURL(\''+fid+'\',this.value)"/>'+
-        '<span id="tfh-'+fid+'" style="font-size:11px;margin-top:2px;display:none"></span>'+
-      '</div>'+
+    '<div class="f" style="margin-bottom:8px">'+
+      '<label style="font-size:12px;font-weight:600">Description <span class="req">*</span></label>'+
+      '<input id="tfd-'+fid+'" value="'+esc(d.description||'')+'"/>'+
+    '</div>'+
+    '<div class="f">'+
+      '<label style="font-size:12px;font-weight:600">Location URL <span class="req">*</span></label>'+
+      '<input id="tfl-'+fid+'" value="'+esc(d.location||'')+'" placeholder="https://..." oninput="checkURL(\''+fid+'\',this.value)"/>'+
+      '<span id="tfh-'+fid+'" style="font-size:11px;margin-top:3px;display:none"></span>'+
     '</div>';
   cont.appendChild(entry);
-  // set values programmatically after DOM insert
-  var de=document.getElementById('tfd-'+fid);
-  var le=document.getElementById('tfl-'+fid);
+  // set values after insert
+  var de=document.getElementById('tfd-'+fid);var le=document.getElementById('tfl-'+fid);
   if(de)de.value=d.description||'';
   if(le){le.value=d.location||'';if(d.location)checkURL(fid,d.location);}
 }
@@ -1227,10 +1194,7 @@ function addTFAA(recId,d){
 
 function rmTF(fid,recId,type){
   var e=document.getElementById('tf-'+fid);if(e)e.remove();
-  if(type==='aa'){
-    var btn=document.getElementById('taabtn-'+recId);
-    if(btn){btn.style.display='';btn.textContent='＋ Set Allowed Amount File URL';}
-  }
+  if(type==='aa'){var btn=document.getElementById('taabtn-'+recId);if(btn)btn.style.display='';}
 }
 
 function checkURL(fid,val){
@@ -1238,7 +1202,7 @@ function checkURL(fid,val){
   if(!val){hint.style.display='none';return;}
   hint.style.display='block';
   var ok=val.indexOf('https://')===0;
-  hint.style.color=ok?'var(--c-green-600)':'var(--c-red-600)';
+  hint.style.color=ok?'var(--green)':'var(--red)';
   hint.textContent=ok?'✓ Valid https:// URL':'✗ Must start with https://';
 }
 
@@ -1359,7 +1323,6 @@ function showResult(scope,data,date,issuer,plan,suffix){
   document.getElementById('pw-'+scope).style.display='block';
   var dl=document.getElementById('dl-'+scope);
   dl.style.display='inline-flex';dl.textContent='↓ '+fname;
-  var zl=document.getElementById('zip-lbl-'+scope+'-manual');if(zl)zl.classList.add('show');
   setCount(scope,RS[scope].length,true);
   toast('✓ JSON generated — '+RS[scope].length+' record(s)');
   runValidation(scope,data);
@@ -1367,119 +1330,10 @@ function showResult(scope,data,date,issuer,plan,suffix){
 
 function dlFile(scope){
   var data=GEN[scope];if(!data)return;
-  var jsonStr=JSON.stringify(data,null,2);
-  var fname=DLNAMES[scope];
-  var sizeMB=jsonStr.length/1024/1024;
-  var MB10=10;
-
-  var zipChk=document.getElementById('zip-'+scope+'-manual');
-  var userWantsZip=zipChk&&zipChk.checked;
-
-  if(sizeMB>MB10){
-    // Auto-force ZIP — file exceeds 10 MB upload limit
-    // Auto-check the ZIP toggle to show user what happened
-    if(zipChk&&!zipChk.checked)zipChk.checked=true;
-    toast('\u26A0 File is '+sizeMB.toFixed(1)+' MB — exceeds 10 MB limit. Downloading as ZIP automatically.');
-    dlAsZip(fname,jsonStr);
-  } else if(userWantsZip){
-    dlAsZip(fname,jsonStr);
-  } else {
-    var blob=new Blob([jsonStr],{type:'application/json'});
-    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;
-    document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(a.href);
-    toast('\u2713 Downloaded: '+fname+' ('+sizeMB.toFixed(2)+' MB)');
-  }
-}
-
-// ── ZIP download using DeflateRaw + manual ZIP format ──
-function dlAsZip(jsonFilename, jsonStr){
-  // Pure JS PKZIP format — STORE method (no compression) — no external dependencies
-  // Works in all browsers, offline, forever — no WebAPI dependencies
-  var zipFname=jsonFilename.replace('.json','.zip');
-
-  function makeZipStore(filename, content){
-    // local file header + data + central directory + end of central dir
-    var enc=new TextEncoder();
-    var data=enc.encode(content);
-    var nameBytes=enc.encode(filename);
-    var crc=crc32(data);
-    var now=new Date();
-    var dosDate=((now.getFullYear()-1980)<<9)|((now.getMonth()+1)<<5)|now.getDate();
-    var dosTime=(now.getHours()<<11)|(now.getMinutes()<<5)|(now.getSeconds()>>1);
-
-    function u16(n){var b=new Uint8Array(2);new DataView(b.buffer).setUint16(0,n,true);return b;}
-    function u32(n){var b=new Uint8Array(4);new DataView(b.buffer).setUint32(0,n,true);return b;}
-
-    // Local file header
-    var lfh=concat([
-      new Uint8Array([0x50,0x4b,0x03,0x04]), // signature
-      u16(20),    // version needed
-      u16(0),     // general purpose flag
-      u16(0),     // compression method: STORE
-      u16(dosTime),u16(dosDate),
-      u32(crc),
-      u32(data.length), // compressed size
-      u32(data.length), // uncompressed size
-      u16(nameBytes.length),
-      u16(0),     // extra field length
-      nameBytes,
-      data
-    ]);
-
-    var lfhOffset=0;
-
-    // Central directory record
-    var cdr=concat([
-      new Uint8Array([0x50,0x4b,0x01,0x02]),
-      u16(20),u16(20),
-      u16(0),u16(0),
-      u16(dosTime),u16(dosDate),
-      u32(crc),
-      u32(data.length),u32(data.length),
-      u16(nameBytes.length),
-      u16(0),u16(0),u16(0),u16(0),
-      u32(0),
-      u32(lfhOffset),
-      nameBytes
-    ]);
-
-    // End of central directory
-    var eocd=concat([
-      new Uint8Array([0x50,0x4b,0x05,0x06]),
-      u16(0),u16(0),
-      u16(1),u16(1),
-      u32(cdr.length),
-      u32(lfh.length),
-      u16(0)
-    ]);
-
-    return concat([lfh,cdr,eocd]);
-  }
-
-  function concat(arrays){
-    var total=arrays.reduce(function(n,a){return n+a.length;},0);
-    var out=new Uint8Array(total);var off=0;
-    arrays.forEach(function(a){out.set(a,off);off+=a.length;});
-    return out;
-  }
-
-  function crc32(data){
-    var table=crc32.table||(crc32.table=(function(){
-      var t=new Uint32Array(256);
-      for(var i=0;i<256;i++){var c=i;for(var j=0;j<8;j++)c=c&1?(0xEDB88320^(c>>>1)):(c>>>1);t[i]=c;}
-      return t;
-    })());
-    var crc=0xFFFFFFFF;
-    for(var i=0;i<data.length;i++)crc=table[(crc^data[i])&0xFF]^(crc>>>8);
-    return (crc^0xFFFFFFFF)>>>0;
-  }
-
-  var zipBytes=makeZipStore(jsonFilename, jsonStr);
-  var blob=new Blob([zipBytes],{type:'application/zip'});
-  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=zipFname;
-  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(a.href);
-  var kb=Math.round(zipBytes.length/1024);
-  toast('✓ Downloaded ZIP: '+zipFname+' ('+kb+' KB)');
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=DLNAMES[scope];
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  toast('✓ Downloaded: '+DLNAMES[scope]);
 }
 
 function copyJ(scope){
@@ -1495,8 +1349,7 @@ function clearScope(scope){
   var _pw=document.getElementById('pw-'+scope);if(_pw)_pw.style.display='none';
   var _vw=document.getElementById('vw-'+scope);if(_vw)_vw.style.display='none';
   document.getElementById('dl-'+scope).style.display='none';
-  var _zl=document.getElementById('zip-lbl-'+scope+'-manual');if(_zl){_zl.classList.remove('show');var _zc=document.getElementById('zip-'+scope+'-manual');if(_zc)_zc.checked=false;}
-  clearErr(scope);setCount(scope,'-',false);
+  clearErr(scope);setCount(scope,'–',false);
 }
 function rstINN(){PROVS=[];document.getElementById('inn-provs').innerHTML='';clearScope('inn');initINN();}
 function rstAA(){clearScope('aa');initAA();}
@@ -1526,7 +1379,7 @@ function runValidation(scope, data){
   if(!data){
     var vw0=document.getElementById('vw-'+scope);if(vw0)vw0.style.display='block';
     var vh0=document.getElementById('vh-'+scope);
-    if(vh0){vh0.className='val-head warn';vh0.innerHTML='⚠ Generate JSON first, then validate.';}
+    if(vh0){vh0.className='val-head warn';vh0.innerHTML='&#9888; Generate JSON first, then validate.';}
     return;
   }
 
@@ -2113,12 +1966,8 @@ document.getElementById('ah-date').value=new Date().toISOString().split('T')[0];
 
 var LTEST_COUNTS={inn:50,aa:50};
 
-var LTEST_MAX=20000;        // Hard limit: 20k records (~15-19MB JSON, ~73MB heap) — stable on all 2GB+ machines
-var LTEST_WARN=5000;        // Warn: 5k+ records — approaching 10MB upload limit
-var LTEST_RISK=13000;       // ZIP required: 13k+ INN records (~10MB+)
-// 10 MB upload limit thresholds (actual measured per-record sizes)
-var LTEST_10MB_INN=13000;  // INN: ~764 bytes/record → 10MB ≈ 13,715 records
-var LTEST_10MB_AA=10000;   // AA:  ~962 bytes/record → 10MB ≈ 10,894 records
+var LTEST_MAX=10000;
+var LTEST_WARN=5000;
 
 function selCount(scope,n,btn){
   if(btn){
@@ -2137,33 +1986,17 @@ function selCount(scope,n,btn){
 function showLimitMsg(scope,n){
   var el=document.getElementById(scope+'-limit-msg');
   if(!el)return;
-  var bytesPerRec=scope==='aa'?962:764;
-  var approxMB=((n*bytesPerRec)/1024/1024).toFixed(1);
-  var limit10mb=scope==='aa'?LTEST_10MB_AA:LTEST_10MB_INN;
-  var zipChk=document.getElementById('zip-'+scope);
-
+  var approxMB=((n*750)/1024/1024).toFixed(1);
   if(n>LTEST_MAX){
     el.className='ltest-limit danger';
-    el.innerHTML='⚠ <b>'+n.toLocaleString()+' exceeds the maximum of 20,000 records.</b> Please reduce to 20,000 or fewer. Estimated size: ~'+approxMB+' MB.';
-    el.style.display='block';
-  } else if(n>=LTEST_RISK){
-    el.className='ltest-limit warn';
-    el.innerHTML='⚠ <b>'+n.toLocaleString()+' records ≈ '+approxMB+' MB</b> — approaching the 10,000 record limit. <b>ZIP auto-enabled.</b> Download as ZIP to stay under upload limits.';
-    el.style.display='block';
-    if(zipChk&&!zipChk.checked)zipChk.checked=true;
-  } else if(n>limit10mb){
-    el.className='ltest-limit warn';
-    el.innerHTML='⚠ <b>'+n.toLocaleString()+' records ≈ '+approxMB+' MB</b> — exceeds the 10 MB upload limit. <b>ZIP auto-enabled.</b> Download as ZIP, then unzip before uploading.';
-    el.style.display='block';
-    if(zipChk&&!zipChk.checked)zipChk.checked=true;
+    el.innerHTML='&#x26A0; <b>'+n.toLocaleString()+' exceeds the maximum of 10,000 records.</b> Please reduce the count. Attempting to generate more than 10,000 records may crash your browser or produce an oversized file. Estimated file size: ~'+approxMB+' MB.';
   } else if(n>LTEST_WARN){
     el.className='ltest-limit warn';
-    el.innerHTML='⚠ <b>'+n.toLocaleString()+' records ≈ '+approxMB+' MB.</b> Generation may take a few seconds.';
-    el.style.display='block';
+    el.innerHTML='&#x26A0; <b>'+n.toLocaleString()+' records</b> — large file (~'+approxMB+' MB). This may take a few seconds to generate. Recommended limit: 10,000 records.';
   } else {
     el.className='ltest-limit';
     el.style.display='none';
-    if(zipChk&&n<=limit10mb)zipChk.checked=false;
+    return;
   }
 }
 
@@ -2451,26 +2284,26 @@ function makeInnRecord(idx,providerCount,opts){
   var pool=typeObj.pool;
   var rec=pool[Math.floor(Math.random()*pool.length)];
 
-  // billing class: cycle all three if mix ON, fixed default if mix OFF
+  // billing class: use record's recommended class, or mix if enabled
   var bclass;
   if(opts.mixBclass&&!isDRG){
+    // true mix — cycle through all three billing classes evenly
     var bclassCycle=['professional','institutional','both'];
     bclass=bclassCycle[idx % 3];
-  } else if(isDRG){
-    bclass='institutional'; // DRG always institutional
   } else {
-    bclass='professional'; // mix OFF — professional is default
+    bclass=rec.bclass||'institutional';
   }
 
-  // setting: cycle all three if mix ON, fixed default if mix OFF
+  // setting: use record's recommended setting, or mix if enabled
   var setting;
   if(opts.mixSetting&&!isDRG){
+    // true mix — cycle through all three settings evenly
     var settingCycle=['outpatient','inpatient','both'];
     setting=settingCycle[idx % 3];
   } else if(isDRG){
-    setting='inpatient'; // DRG always inpatient
+    setting=rec.setting||'inpatient';
   } else {
-    setting='outpatient'; // mix OFF — fixed default, not pool value
+    setting=rec.setting||'outpatient';
   }
 
   // CMS rule: inpatient+professional is invalid — switch to institutional
@@ -2534,23 +2367,17 @@ function makeAARecord(idx,opts){
 
   var bclass;
   if(opts.mixBclass){
-    // true mix — alternate professional / institutional
-    bclass=idx%2===0?'professional':'institutional';
+    // weight toward record's recommended bclass but mix
+    bclass=Math.random()<0.6?(rec.bclass||'professional'):rnd(['professional','institutional']);
   } else {
-    bclass='professional'; // mix OFF — professional is default
+    bclass=rec.bclass||'professional';
   }
   // AA only allows professional or institutional (not both)
   if(bclass==='both')bclass='professional';
 
-  var setting;
-  if(opts.mixBclass){
-    // vary setting with bclass cycle
-    setting=idx%3===1?'inpatient':'outpatient';
-  } else {
-    setting='outpatient'; // mix OFF — fixed default
-  }
+  var setting=rec.setting||'outpatient';
   // AA setting only allows inpatient or outpatient (not both)
-  if(setting==='both')setting='outpatient';
+  if(setting==='both')setting=Math.random()<0.5?'inpatient':'outpatient';
 
   var ttype=Math.random()>0.15?'ein':'npi';
   var tval=ttype==='ein'?rndEIN():String(rndNPI());
@@ -2634,7 +2461,7 @@ function showLtestStat(scope,msg){
 function ltestGenINN(){
   var n=getCount('inn');
   if(!n||n<1){toast('Enter a valid record count.');return;}
-  if(n>LTEST_MAX){showErr('inn','Maximum is 20,000 records per file. You entered '+n.toLocaleString()+'.');showLimitMsg('inn',n);return;}
+  if(n>LTEST_MAX){showErr('inn','Maximum is 10,000 records per file. You entered '+n.toLocaleString()+'. Please reduce the count and try again.');showLimitMsg('inn',n);return;}
   var h=getLtestHeader('ih');
   if(!h.entity){showErr('inn','Reporting entity name is required.');return;}
   if(h.idtype==='ein'&&h.planid&&!h.sponsor){showErr('inn','Plan sponsor name required when Plan ID type is ein.');return;}
@@ -2693,15 +2520,9 @@ function ltestGenINN(){
         var ss2=pad2(now2.getSeconds());
         var seq2=getSeq('inn');
         var fname=now2.toISOString().split('T')[0]+'_'+hh2+mm2+ss2+'_v'+seq2+'_loadtest-'+n+'_in-network-rates.json';
-        var ltJson2=JSON.stringify(result,null,2);
-        var ltMB2=ltJson2.length/1024/1024;
-        var useZipLtInn=document.getElementById('zip-inn')&&document.getElementById('zip-inn').checked;
-        if(ltMB2>10||useZipLtInn){
-          if(ltMB2>10){var zc2=document.getElementById('zip-inn');if(zc2)zc2.checked=true;}
-          dlAsZip(fname,ltJson2);
-        } else {
-          var blob=new Blob([ltJson2],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(a.href);
-        }
+        var blob=new Blob([JSON.stringify(result,null,2)],{type:'application/json'});
+        var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
         hideLtestProgress('inn');
         var szMB=((JSON.stringify(result).length)/1024/1024).toFixed(2);
         showLtestStat('inn','✓ Load test complete: '+n.toLocaleString()+' in_network records | '+provCount+' provider ref(s) | ~'+szMB+' MB | '+fname);
@@ -2761,15 +2582,9 @@ function ltestGenAA(){
         var ss3=pad2(now3.getSeconds());
         var seq3=getSeq('aa');
         var fname=now3.toISOString().split('T')[0]+'_'+hh3+mm3+ss3+'_v'+seq3+'_loadtest-'+n+'_allowed-amounts.json';
-        var ltJson3=JSON.stringify(result,null,2);
-        var ltMB3=ltJson3.length/1024/1024;
-        var useZipLtAa=document.getElementById('zip-aa')&&document.getElementById('zip-aa').checked;
-        if(ltMB3>10||useZipLtAa){
-          if(ltMB3>10){var zc3=document.getElementById('zip-aa');if(zc3)zc3.checked=true;}
-          dlAsZip(fname,ltJson3);
-        } else {
-          var blob=new Blob([ltJson3],{type:'application/json'});var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(a.href);
-        }
+        var blob=new Blob([JSON.stringify(result,null,2)],{type:'application/json'});
+        var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=fname;
+        document.body.appendChild(a);a.click();document.body.removeChild(a);
         hideLtestProgress('aa');
         var szMBaa=((JSON.stringify(result).length)/1024/1024).toFixed(2);
         showLtestStat('aa','✓ Load test complete: '+n.toLocaleString()+' out_of_network records | ~'+szMBaa+' MB | '+fname);
